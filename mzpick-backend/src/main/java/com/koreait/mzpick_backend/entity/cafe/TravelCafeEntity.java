@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.entity.travel;
+package com.koreait.mzpick_backend.entity.cafe;
 
 import java.util.Date;
 
@@ -16,17 +16,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travel")
-@Table(name="travel")
-public class TravelEntity {
-
+@Entity(name="travelCafe")
+@Table(name="travel_cafe")
+public class TravelCafeEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer travelNumber;
+    private Integer travelCafeNumber;
     private String userId;
-    private String travelTitle;
+    private Integer travelCafeCategory;
+    private String travelCafeTitle;
     private String travelLocation;
-    private String travelContent;
-    private Integer travelViewCount;
-    private Date travelDate;
+    private String travelCafeContent;
+    private Integer travelCafeViewCount;
+    private Date travelCafeDate;
 }
