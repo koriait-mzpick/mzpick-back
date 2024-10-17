@@ -1,6 +1,5 @@
-package com.koreait.mzpick_backend.entity.travel;
+package com.koreait.mzpick_backend.entity.cafe;
 
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,17 +15,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travel")
-@Table(name="travel")
-public class TravelEntity {
-
+@Entity(name="travelCafePhoto")
+@Table(name="travel_cafe_photo")
+public class TravelCafePhotoEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer travelNumber;
-    private String userId;
-    private String travelTitle;
-    private String travelLocation;
-    private String travelContent;
-    private Integer travelViewCount;
-    private Date travelDate;
+    private Integer travelCafePhotoNumber;
+    private Integer travelCafeNumber;
+    private String travelCafePhotoLink;
+    
 }
