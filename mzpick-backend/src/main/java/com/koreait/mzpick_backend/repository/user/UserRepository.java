@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.repository;
+package com.koreait.mzpick_backend.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +14,5 @@ public interface  UserRepository extends JpaRepository<UserEntity, String>{
 
     UserEntity findByUserId(String userId);
     UserEntity findBySnsIdAndJoinPath(String sns, String joinPath);
+    
 }

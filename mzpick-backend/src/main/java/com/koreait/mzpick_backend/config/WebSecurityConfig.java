@@ -22,7 +22,7 @@ import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
 import com.koreait.mzpick_backend.filter.JwtAuthenticationFilter;
 import com.koreait.mzpick_backend.handler.OAuth2SuccessHandler;
-import com.koreait.mzpick_backend.service.implement.OAuth2UserServiceImplement;
+import com.koreait.mzpick_backend.service.implement.auth.OAuth2UserServiceImplement;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
