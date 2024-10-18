@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.service.implement;
+package com.koreait.mzpick_backend.service.implement.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,8 +17,8 @@ import com.koreait.mzpick_backend.entity.auth.UserEntity;
 import com.koreait.mzpick_backend.provider.JwtProvider;
 import com.koreait.mzpick_backend.provider.SmsProvider;
 import com.koreait.mzpick_backend.repository.TelAuthNumberRepository;
-import com.koreait.mzpick_backend.repository.UserRepository;
-import com.koreait.mzpick_backend.service.AuthService;
+import com.koreait.mzpick_backend.repository.user.UserRepository;
+import com.koreait.mzpick_backend.service.auth.AuthService;
 import com.koreait.mzpick_backend.util.AuthNumberCreator;
 
 import lombok.RequiredArgsConstructor;

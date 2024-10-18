@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.service;
+package com.koreait.mzpick_backend.service.auth;
 
 import org.springframework.http.ResponseEntity;
 

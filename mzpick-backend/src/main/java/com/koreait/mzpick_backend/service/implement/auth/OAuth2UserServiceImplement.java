@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.service.implement;
+package com.koreait.mzpick_backend.service.implement.auth;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.koreait.mzpick_backend.common.object.CustomOAuth2User;
 import com.koreait.mzpick_backend.entity.auth.UserEntity;
 import com.koreait.mzpick_backend.provider.JwtProvider;
-import com.koreait.mzpick_backend.repository.UserRepository;
+import com.koreait.mzpick_backend.repository.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

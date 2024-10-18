@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.controller;
+package com.koreait.mzpick_backend.controller.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import com.koreait.mzpick_backend.dto.request.auth.TelAuthCheckRequestDto;
 import com.koreait.mzpick_backend.dto.request.auth.TelAuthRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.auth.SignInResponseDto;
-import com.koreait.mzpick_backend.service.AuthService;
+import com.koreait.mzpick_backend.service.auth.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
