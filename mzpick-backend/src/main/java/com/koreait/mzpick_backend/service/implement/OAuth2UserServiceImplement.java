@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.common.object.CustomOAuth2User;
-import com.koreait.mzpick_backend.entity.UserEntity;
+import com.koreait.mzpick_backend.entity.auth.UserEntity;
 import com.koreait.mzpick_backend.provider.JwtProvider;
 import com.koreait.mzpick_backend.repository.UserRepository;
 
