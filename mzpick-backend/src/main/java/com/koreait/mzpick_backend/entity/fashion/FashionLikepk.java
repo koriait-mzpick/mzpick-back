@@ -1,9 +1,8 @@
 package com.koreait.mzpick_backend.entity.fashion;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,12 +12,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="fashionLike")
-@Table(name="fashion_like")
-@IdClass(FashionLikepk.class)
-public class FashionLikeEntity {
-    @Id
+public class FashionLikepk implements Serializable{
+    @Column()
     private String userId;
-    @Id
+    @Column()
     private Integer fashionNumber;
+    
 }

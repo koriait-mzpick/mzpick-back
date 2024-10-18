@@ -1,10 +1,8 @@
 package com.koreait.mzpick_backend.entity.food;
 
+import java.io.Serializable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,14 +12,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travelFoodSave")
-@Table(name="travel_food_save")
-@IdClass(TravelFoodSavepk.class)
-public class TravelFoodSaveEntity {
-
-    @Id
+public class TravelFoodSavepk implements Serializable{
+    @Column()
     private Integer travelFoodNumber;
-    @Id
+    @Column()
     private String userId;
     
 }
