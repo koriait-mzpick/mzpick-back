@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.entity;
+package com.koreait.mzpick_backend.entity.fashion;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,16 +8,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="telAuthNumber")
-@Table(name="tel_auth_number")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TelAuthNumberEntity {
-
-    @Id 
-    private String telNumber;
-
-    private String authNumber;
+@Entity(name="fashionSave")
+@Table(name="fashion_save")
+public class FashionSaveEntity {
+    @Id
+    private String userId;
+    @Id
+    private Integer fashionNumber;
 }

@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.entity;
+package com.koreait.mzpick_backend.entity.auth;
 
 import com.koreait.mzpick_backend.dto.request.auth.SignUpRequestDto;
 
@@ -10,14 +10,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="user")
-@Table(name="user")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name="user")
+@Table(name="user")
 public class UserEntity {
-    
     @Id
     private String userId;
     private String password;
@@ -34,5 +33,6 @@ public class UserEntity {
         this.joinPath = dto.getJoinPath();
         this.snsId = dto.getSnsId();
     }
-
 }
+
+
