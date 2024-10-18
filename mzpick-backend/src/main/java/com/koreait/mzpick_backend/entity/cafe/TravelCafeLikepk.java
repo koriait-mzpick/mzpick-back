@@ -1,10 +1,8 @@
 package com.koreait.mzpick_backend.entity.cafe;
 
+import java.io.Serializable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +12,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travelCafeSae")
-@Table(name="travel_cafe_save")
-@IdClass(TravelCafeSavepk.class)
-public class TravelCafeSaveEntity {
-    @Id
+public class TravelCafeLikepk implements Serializable{
+    @Column()
     private Integer travelCafeNumber;
-    @Id
+    @Column()
     private String userId;
     
 }
