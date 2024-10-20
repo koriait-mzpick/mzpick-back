@@ -16,7 +16,7 @@ import com.koreait.mzpick_backend.entity.auth.TelAuthNumberEntity;
 import com.koreait.mzpick_backend.entity.auth.UserEntity;
 import com.koreait.mzpick_backend.provider.JwtProvider;
 import com.koreait.mzpick_backend.provider.SmsProvider;
-import com.koreait.mzpick_backend.repository.TelAuthNumberRepository;
+import com.koreait.mzpick_backend.repository.auth.TelAuthNumberRepository;
 import com.koreait.mzpick_backend.repository.user.UserRepository;
 import com.koreait.mzpick_backend.service.auth.AuthService;
 import com.koreait.mzpick_backend.util.AuthNumberCreator;

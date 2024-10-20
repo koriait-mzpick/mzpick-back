@@ -1,5 +1,5 @@
 package com.koreait.mzpick_backend.service.food;
 
-public interface  FoodService {
+public interface TravelFoodFileService {
     
 }
