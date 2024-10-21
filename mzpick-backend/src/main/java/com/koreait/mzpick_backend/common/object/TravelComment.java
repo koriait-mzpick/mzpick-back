@@ -9,14 +9,12 @@ import lombok.Getter;
 
 @Getter
 public class TravelComment {
-    private String name;
     private String userId;
     private String travelComment;
 
     private TravelComment(TravelCommentEntity travelCommentEntity) {
-        this.name = getName();
-        this.userId = getUserId();
-        this.travelComment = getTravelComment();
+        this.userId = travelCommentEntity.getUserId();
+        this.travelComment = travelCommentEntity.getTravelComment();
     }
 
     public static List<TravelComment> getCommentList(List<TravelCommentEntity> travelCommentEntities) {
