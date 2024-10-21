@@ -8,8 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CafeCommentServiceImplement implements TravelCafeCommentService{
+public class TravelCafeCommentServiceImplement implements TravelCafeCommentService {
     
+
 }
-
-

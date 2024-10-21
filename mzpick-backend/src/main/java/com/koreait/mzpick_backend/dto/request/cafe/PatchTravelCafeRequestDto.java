@@ -16,11 +16,11 @@ public class PatchTravelCafeRequestDto {
     @NotBlank
     private String travelCafeTitle;
     @NotNull
-    private List<String> travelCafeHashtagContent;
+    private List<String> travelCafeHashtagContentList;
     @NotBlank
     private String travelCafeLocation;
     @NotNull
-    private List<String> travelCafePhoto;
+    private List<String> travelCafePhotoList;
     @NotNull
     private List<String> travelCafeCategoryList;
     @NotBlank

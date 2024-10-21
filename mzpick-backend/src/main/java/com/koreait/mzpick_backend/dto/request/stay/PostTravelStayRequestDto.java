@@ -16,11 +16,11 @@ public class PostTravelStayRequestDto {
     @NotBlank
     private String travelStayTitle;
     @NotNull
-    private List<String> travelStayHashtagContent;
+    private List<String> travelStayHashtagContentList;
     @NotBlank
     private String travelStayLocation;
     @NotNull
-    private List<String> travelStayPhoto;
+    private List<String> travelStayPhotoList;
     @NotNull
     private List<String> travelStayCategoryList;
     @NotBlank

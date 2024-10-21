@@ -26,25 +26,21 @@ import lombok.RequiredArgsConstructor;
 public class TravelController {
     private final TravelService travelService;
 
-    
-
-    
-    @GetMapping(value = {"", "/"})
-    public ResponseEntity<? super GetTravelListResponseDto> getTravel(
-    ){
-        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
+    @GetMapping("/list")
+    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(){
+        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravelList();
         return resposne;
     }
-    @GetMapping("/{travelNumber}")
-    public ResponseEntity<? super GetTravelListResponseDto> getTravel(
-        @PathVariable("travelNumber") Integer travelNumber
-    ){
-        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
-        return resposne;
-    }
+    // @GetMapping("/{travelNumber}")
+    // public ResponseEntity<? super GetTravelListResponseDto> getTravel(
+    //     @PathVariable("travelNumber") Integer travelNumber
+    // ){
+    //     ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
+    //     return resposne;
+    // }
 
     @PostMapping(value = {"", "/"})
-    public ResponseEntity<ResponseDto> postTravelNum(
+    public ResponseEntity<ResponseDto> postTravel(
         @RequestBody @Valid PostTravelRequestDto requestBody,
         @AuthenticationPrincipal String userId
     ){

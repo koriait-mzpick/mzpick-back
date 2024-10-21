@@ -21,9 +21,9 @@ public class TravelDetail {
     private Integer travelView;
     private LocalDate travelDate;
 
-    private TravelDetail(TravelEntity travelEntity, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
+    public TravelDetail(TravelEntity travelEntity, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
 
-         List<String> travelPhoto = new ArrayList<>();
+        List<String> travelPhoto = new ArrayList<>();
         for (TravelPhotoEntity travelPhotoEntity: travelPhotoEntities) travelPhoto.add(travelPhotoEntity.getTravelPhotoLink());
         
         List<String> travelHashtag = new ArrayList<>();
@@ -40,14 +40,14 @@ public class TravelDetail {
         this.travelDate = travelEntity.getTravelDate();
     }
 
-    public static List<TravelDetail> getDetailList(List<TravelEntity> travelEntities, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
-        List<TravelDetail> travelComments = new ArrayList<>();
+    // public static TravelDetail getDetail(TravelEntity travelEntity, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
+    //     List<TravelDetail> travelComments = new ArrayList<>();
 
-        for (TravelEntity travelEntity: travelEntities) {
-            TravelDetail travelComment = new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
-            travelComments.add(travelComment);
-        }
-        return travelComments;
-    }
+    //     for (TravelEntity travelEntity: travelEntities) {
+    //         TravelDetail travelComment = new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
+    //         travelComments.add(travelComment);
+    //     }
+    //     return travelComments;
+    // }
 }
 

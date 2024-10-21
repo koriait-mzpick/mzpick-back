@@ -1,6 +1,5 @@
 package com.koreait.mzpick_backend.entity.stay;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,4 +23,9 @@ public class TravelStayCategoryEntity {
     private Integer travelStayCategoryNumber;
     private Integer travelStayNumber;
     private String travelStayCategoryContent;
+
+    public TravelStayCategoryEntity(Integer travelStayNumber, String travelStayCategoryContent){
+        this.travelStayNumber = travelStayNumber;
+        this.travelStayCategoryContent = travelStayCategoryContent;
+    }
 }

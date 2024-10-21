@@ -1,7 +1,7 @@
 package com.koreait.mzpick_backend.entity.food;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 import com.koreait.mzpick_backend.dto.request.food.PatchTravelFoodRequestDto;
 import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodRequestDto;

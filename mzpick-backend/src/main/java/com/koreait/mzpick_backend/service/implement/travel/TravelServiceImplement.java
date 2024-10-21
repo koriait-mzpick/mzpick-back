@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.common.object.Travel;
-import com.koreait.mzpick_backend.common.object.TravelDetail;
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
@@ -153,19 +152,18 @@ public class TravelServiceImplement implements TravelService {
 
     @Override
     public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(Integer travelNumber) {
-        TravelDetail travelDetail  = null;
-        try{
-            TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
-            if(travelEntity == null) return ResponseDto.noExistBoard();
+        return null;
+        // try{
+        //     TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
+        //     if(travelEntity == null) return ResponseDto.noExistBoard();
             
-            List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
-            List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-            
-        }catch(Exception exception){
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
-
-        return GetTravelDetailResponseDto.success(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+        //     List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
+        //     List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
+        //     TravelDetail travelDetail = new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+        // }catch(Exception exception){
+        //     exception.printStackTrace();
+        //     return ResponseDto.databaseError();
+        // }
+        // return GetTravelDetailResponseDto.success(travelDetail);
     }
 }

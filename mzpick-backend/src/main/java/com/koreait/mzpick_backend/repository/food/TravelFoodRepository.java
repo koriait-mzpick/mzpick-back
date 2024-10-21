@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.koreait.mzpick_backend.entity.food.TravelFoodEntity;
 
+
 @Repository
 public interface TravelFoodRepository extends JpaRepository<TravelFoodEntity, Integer> {
-    
+    TravelFoodEntity findByTravelFoodNumber (Integer travelFoodNumber);
 }

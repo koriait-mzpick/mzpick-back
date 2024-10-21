@@ -24,4 +24,9 @@ public class TravelCafePhotoEntity {
     private Integer travelCafeNumber;
     private String travelCafePhotoLink;
     
+        
+    public TravelCafePhotoEntity(Integer travelCafeNumber, String travelCafePhotoLink) {
+        this.travelCafeNumber = travelCafeNumber;
+        this.travelCafePhotoLink = travelCafePhotoLink;
+    }
 }

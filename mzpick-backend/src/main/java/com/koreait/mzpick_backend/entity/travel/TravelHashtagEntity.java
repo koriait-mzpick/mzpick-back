@@ -30,10 +30,5 @@ public class TravelHashtagEntity {
         this.travelNumber = travelNumber;
         this.travelHashtagContent = travelHashtagContent;
     }
-
-    public void patch(Integer travelNumber, String travelHashtagContent){
-        this.travelNumber = travelNumber;
-        this.travelHashtagContent =travelHashtagContent;
-    }
     
 }
