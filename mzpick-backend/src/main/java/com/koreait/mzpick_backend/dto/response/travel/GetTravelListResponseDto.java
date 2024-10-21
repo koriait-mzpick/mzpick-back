@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.koreait.mzpick_backend.common.object.Travel;
-// import com.koreait.mzpick_backend.common.object.Travel;
+
 import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
@@ -23,13 +23,13 @@ public class GetTravelListResponseDto extends ResponseDto{
 
     private List<Travel> travels;
 
-    private GetTravelListResponseDto(List<TravelEntity> travelEntities,List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities ) {
+    private GetTravelListResponseDto(List<Travel> travels) {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-        this.travels = Travel.getList(travelEntities, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
+        this.travels = travels;
     }
 
-    public static ResponseEntity<GetTravelListResponseDto> success(List<TravelEntity> travelEntities, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
-        GetTravelListResponseDto responseBody = new GetTravelListResponseDto(travelEntities, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
+    public static ResponseEntity<GetTravelListResponseDto> success(List<Travel> travels) {
+        GetTravelListResponseDto responseBody = new GetTravelListResponseDto(travels);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 }

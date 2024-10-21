@@ -6,9 +6,13 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.koreait.mzpick_backend.common.object.Travel;
+import com.koreait.mzpick_backend.common.object.TravelDetail;
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelDetailResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelListResponseDto;
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
@@ -124,5 +128,44 @@ public class TravelServiceImplement implements TravelService {
             return ResponseDto.success();
     }
 
+    @Override
+    public ResponseEntity<? super GetTravelListResponseDto> getTravelList() {
 
+        List<Travel> travels = new ArrayList<>();
+
+        try {
+            List<TravelEntity> travelEntities = travelRepository.findAll();
+            for(TravelEntity travelEntity : travelEntities) {
+                Integer travelNumber = travelEntity.getTravelNumber();
+                List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
+                List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
+                // 좋아요
+                Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+                travels.add(travel);
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetTravelListResponseDto.success(travels);        
+    }
+
+    @Override
+    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(Integer travelNumber) {
+        TravelDetail travelDetail  = null;
+        try{
+            TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
+            if(travelEntity == null) return ResponseDto.noExistBoard();
+            
+            List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
+            List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
+            
+        }catch(Exception exception){
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetTravelDetailResponseDto.success(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+    }
 }
