@@ -13,7 +13,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity(name="travelLike")
 @Table(name="travel_Like")
 @IdClass(TravelLikePK.class)
@@ -22,5 +21,10 @@ public class TravelLikeEntity {
     @Id
     private Integer travelNumber;
     @Id
-    private String userId;
+    private String userId;    
+
+    public TravelLikeEntity(Integer travelNumber, String userId) {
+        this.travelNumber = travelNumber;
+        this.userId = userId;
+    }
 }
