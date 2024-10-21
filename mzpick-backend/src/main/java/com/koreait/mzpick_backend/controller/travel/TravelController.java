@@ -3,6 +3,7 @@ package com.koreait.mzpick_backend.controller.travel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
-
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelListResponseDto;
 import com.koreait.mzpick_backend.service.travel.TravelService;
 
 import jakarta.validation.Valid;
@@ -25,8 +26,25 @@ import lombok.RequiredArgsConstructor;
 public class TravelController {
     private final TravelService travelService;
 
+    
+
+    
+    @GetMapping(value = {"", "/"})
+    public ResponseEntity<? super GetTravelListResponseDto> getTravel(
+    ){
+        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
+        return resposne;
+    }
+    @GetMapping("/{travelNumber}")
+    public ResponseEntity<? super GetTravelListResponseDto> getTravel(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
+        return resposne;
+    }
+
     @PostMapping(value = {"", "/"})
-    public ResponseEntity<ResponseDto> postTravel(
+    public ResponseEntity<ResponseDto> postTravelNum(
         @RequestBody @Valid PostTravelRequestDto requestBody,
         @AuthenticationPrincipal String userId
     ){

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 
-import com.koreait.mzpick_backend.entity.travel.TravelCommentEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelLikeEntity;
