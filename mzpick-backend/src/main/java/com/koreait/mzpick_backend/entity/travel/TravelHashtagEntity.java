@@ -1,8 +1,6 @@
 package com.koreait.mzpick_backend.entity.travel;
 
 
-import java.util.List;
-import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
