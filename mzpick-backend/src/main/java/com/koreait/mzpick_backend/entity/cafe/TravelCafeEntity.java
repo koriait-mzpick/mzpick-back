@@ -1,6 +1,9 @@
 package com.koreait.mzpick_backend.entity.cafe;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.koreait.mzpick_backend.dto.request.cafe.PatchTravelCafeRequestDto;
+import com.koreait.mzpick_backend.dto.request.cafe.PostTravelCafeRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,10 +26,26 @@ public class TravelCafeEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer travelCafeNumber;
     private String userId;
-    private Integer travelCafeCategory;
     private String travelCafeTitle;
     private String travelLocation;
     private String travelCafeContent;
     private Integer travelCafeViewCount;
-    private Date travelCafeDate;
+    private LocalDate travelCafeDate;
+
+        public TravelCafeEntity(PostTravelCafeRequestDto dto, String userId){
+        this.userId = userId;
+        this.travelCafeTitle = dto.getTravelCafeTitle();
+        this.travelLocation = dto.getTravelCafeLocation();
+        this.travelCafeContent = dto.getTravelCafeContent();
+        this.travelCafeDate = LocalDate.now();
+        this.travelCafeViewCount = 0;
+    }
+
+    public void patch(PatchTravelCafeRequestDto dto, String userId){
+        this.userId = userId;
+        this.travelCafeTitle = dto.getTravelCafeTitle();
+        this.travelLocation = dto.getTravelCafeLocation();
+        this.travelCafeContent = dto.getTravelCafeContent();
+        this.travelCafeDate = LocalDate.now();
+    }
 }

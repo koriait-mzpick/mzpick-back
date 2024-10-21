@@ -7,5 +7,6 @@ import com.koreait.mzpick_backend.entity.cafe.TravelCafeEntity;
 
 @Repository
 public interface TravelCafeRepository extends JpaRepository<TravelCafeEntity, Integer> {
-    
+    TravelCafeEntity findByTravelCafeNumber(Integer travelStayNumber);
+
 }

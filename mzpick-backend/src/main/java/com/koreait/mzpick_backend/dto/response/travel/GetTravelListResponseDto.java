@@ -7,25 +7,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.koreait.mzpick_backend.common.object.Travel;
-
 import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
-import com.koreait.mzpick_backend.entity.travel.TravelEntity;
-import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
-import com.koreait.mzpick_backend.entity.travel.TravelLikeEntity;
-import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
 
 import lombok.Getter;
 
 @Getter
 public class GetTravelListResponseDto extends ResponseDto{
 
-    private List<Travel> travels;
+    private List<Travel> travelList;
 
     private GetTravelListResponseDto(List<Travel> travels) {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-        this.travels = travels;
+        this.travelList = travels;
     }
 
     public static ResponseEntity<GetTravelListResponseDto> success(List<Travel> travels) {

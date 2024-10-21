@@ -1,6 +1,5 @@
 package com.koreait.mzpick_backend.entity.cafe;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,13 +14,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travelCafeCategory")
-@Table(name="travel_cafe_category")
+@Entity(name = "travelCafeCategory")
+@Table(name = "travel_cafe_category")
 public class TravelCafeCategoryEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer travelCafeCategoryNumber;
     private Integer travelCafeNumber;
     private String travelCafeCategoryContent;
-    
+
+    public TravelCafeCategoryEntity(Integer travelCafeNumber, String travelCafeCategoryContent) {
+        this.travelCafeNumber = travelCafeNumber;
+        this.travelCafeCategoryContent = travelCafeCategoryContent;
+    }
+
 }

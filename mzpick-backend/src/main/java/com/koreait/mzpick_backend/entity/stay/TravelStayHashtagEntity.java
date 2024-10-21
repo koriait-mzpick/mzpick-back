@@ -24,4 +24,9 @@ public class TravelStayHashtagEntity {
     private Integer travelStayHashtagNumber;
     private Integer travelStayNumber;
     private String travelStayHashtagContent;
+
+    public TravelStayHashtagEntity(Integer travelStayNumber, String travelStayHashtagContent) {
+        this.travelStayNumber = travelStayNumber;
+        this.travelStayHashtagContent = travelStayHashtagContent;
+    }
 }

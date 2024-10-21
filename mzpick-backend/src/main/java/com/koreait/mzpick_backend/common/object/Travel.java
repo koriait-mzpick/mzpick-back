@@ -1,9 +1,9 @@
 package com.koreait.mzpick_backend.common.object;
 
 
-import java.util.List;
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
@@ -25,7 +25,7 @@ public class Travel {
         for (TravelPhotoEntity travelPhotoEntity: travelPhotoEntities) travelPhoto.add(travelPhotoEntity.getTravelPhotoLink());
         
         List<String> travelHashtag = new ArrayList<>();
-        for (TravelHashtagEntity travelHashtagEntitiy: travelHashtagEntities) travelHashtag.add(travelHashtagEntitiy.getTravelHashtagContent());
+        for (TravelHashtagEntity travelHashtagEntity: travelHashtagEntities) travelHashtag.add(travelHashtagEntity.getTravelHashtagContent());
         
         this.travelPhoto = travelPhoto;
         this.travelHashtag = travelHashtag;
