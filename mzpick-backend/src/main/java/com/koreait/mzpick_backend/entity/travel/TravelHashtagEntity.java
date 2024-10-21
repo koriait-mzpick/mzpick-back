@@ -24,5 +24,10 @@ public class TravelHashtagEntity {
     private Integer travelHashtagNumber;
     private Integer travelNumber;
     private String travelHashtagContent;
+
+    public TravelHashtagEntity(Integer travelNumber, String travelHashtagContent) {
+        this.travelNumber = travelNumber;
+        this.travelHashtagContent = travelHashtagContent;
+    }
     
 }

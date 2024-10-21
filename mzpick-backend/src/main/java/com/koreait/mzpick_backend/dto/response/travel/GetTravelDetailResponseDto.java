@@ -8,5 +8,5 @@ import lombok.Getter;
 @Getter
 
 public class GetTravelDetailResponseDto extends ResponseDto{
-
+    
 }

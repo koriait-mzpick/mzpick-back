@@ -1,5 +1,6 @@
 package com.koreait.mzpick_backend.dto.request.travel;
 // 여행지 리스트 보기 요청 dto
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
