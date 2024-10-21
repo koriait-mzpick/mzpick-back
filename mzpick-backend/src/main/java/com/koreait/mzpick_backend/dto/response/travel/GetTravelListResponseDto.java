@@ -21,7 +21,7 @@ public class GetTravelListResponseDto extends ResponseDto{
 
     private GetTravelListResponseDto(List<TravelEntity> travelEntities) {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-         
+        this.travels = Travel.getList(travelEntities);
     }
 
     public static ResponseEntity<GetTravelListResponseDto> success(List<TravelEntity> travelEntities) {
