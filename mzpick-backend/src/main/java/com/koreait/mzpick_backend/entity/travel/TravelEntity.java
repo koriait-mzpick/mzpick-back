@@ -3,6 +3,8 @@ package com.koreait.mzpick_backend.entity.travel;
 import java.time.LocalDate;
 
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
+import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,5 +41,13 @@ public class TravelEntity {
         this.travelContent = dto.getTravelContent();
         this.travelDate = LocalDate.now();
         this.travelViewCount = 0;
+    }
+
+    public void patch(PatchTravelRequestDto dto, String userId){
+        this.userId = userId;
+        this.travelTitle = dto.getTravelTitle();
+        this.travelLocation = dto.getTravelLocation();
+        this.travelContent = dto.getTravelContent();
+        this.travelDate = LocalDate.now();
     }
 }

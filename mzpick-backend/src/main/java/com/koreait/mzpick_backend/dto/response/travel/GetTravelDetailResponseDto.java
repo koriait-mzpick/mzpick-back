@@ -20,6 +20,11 @@ import lombok.Getter;
 @Getter
 
 public class GetTravelDetailResponseDto extends ResponseDto{
+
+    public GetTravelDetailResponseDto(String code, String message) {
+        super(code, message);
+        //TODO Auto-generated constructor stub
+    }
     
     private List<Travel> travels;
 

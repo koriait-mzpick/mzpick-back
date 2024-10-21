@@ -25,4 +25,9 @@ public class TravelFoodPhotoEntity {
     private Integer travelFoodNumber;
     private String travelFoodPhotoLink;
     
+
+    public TravelFoodPhotoEntity(Integer travelFoodNumber, String travelFoodPhotoLink){
+        this.travelFoodNumber = travelFoodNumber;
+        this.travelFoodPhotoLink = travelFoodPhotoLink;
+    }    
 }

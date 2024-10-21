@@ -1,11 +1,10 @@
 package com.koreait.mzpick_backend.entity.travel;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,5 +24,9 @@ public class TravelPhotoEntity {
     private Integer travelPhotoNumber;
     private Integer travelNumber;
     private String travelPhotoLink;
-    
+
+    public TravelPhotoEntity(Integer travelNumber, String travelPhotoLink){
+        this.travelNumber = travelNumber;
+        this.travelPhotoLink = travelPhotoLink;
+    }    
 }

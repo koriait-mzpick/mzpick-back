@@ -15,7 +15,6 @@ import com.koreait.mzpick_backend.entity.travel.TravelCommentEntity;
 import lombok.Getter;
 
 @Getter
-
 public class GetTravelCommentListResponseDto extends ResponseDto{
     
     private List<TravelComment> travelComments;

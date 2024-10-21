@@ -2,11 +2,15 @@ package com.koreait.mzpick_backend.controller.travel;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 
@@ -28,5 +32,24 @@ public class TravelController {
     ){
         ResponseEntity<ResponseDto> resposne = travelService.postTravel(requestBody, userId);
         return resposne;
+    }
+
+    @DeleteMapping("/{travelNumber}")
+    public ResponseEntity<ResponseDto> deleteTravel(
+        @PathVariable("travelNumber") Integer travelNumber,
+        @AuthenticationPrincipal String userId
+    ){
+        ResponseEntity<ResponseDto> response = travelService.deleteTravel(travelNumber, userId);
+        return response;
+    }
+
+    @PatchMapping("/{travelNumber}")
+    public ResponseEntity<ResponseDto> patchTravel(
+        @RequestBody @Valid PatchTravelRequestDto requestBody,
+        @PathVariable("travelNumber") Integer travelNumber,
+        @AuthenticationPrincipal String userId
+    ){
+        ResponseEntity<ResponseDto> response = travelService.patchTravel(requestBody, travelNumber, userId);
+        return response;
     }
 }
