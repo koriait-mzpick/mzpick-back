@@ -5,7 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public interface TravelHashtagRepository extends JpaRepository<TravelHashtagEntity, Integer> {
-    
+    TravelHashtagEntity findByTravelNumber(Integer travelNumber);
+
+
+    @Transactional
+    void deleteByTravelNumber(Integer travelNumber);
 }

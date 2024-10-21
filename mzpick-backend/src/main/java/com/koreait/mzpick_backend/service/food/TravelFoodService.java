@@ -1,5 +1,16 @@
 package com.koreait.mzpick_backend.service.food;
 
-public interface  TravelFoodService {
-    
+import org.springframework.http.ResponseEntity;
+
+import com.koreait.mzpick_backend.dto.request.food.PatchTravelFoodRequestDto;
+import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodRequestDto;
+
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+
+public interface TravelFoodService {
+    ResponseEntity<ResponseDto> postTravelFood(PostTravelFoodRequestDto dto, String userId);
+
+    ResponseEntity<ResponseDto> patchTravelFood(PatchTravelFoodRequestDto dto, Integer travelFoodNumber, String userId);
+
+    ResponseEntity<ResponseDto> deleteTravelFood(Integer travelFoodNumber, String userId);
 }

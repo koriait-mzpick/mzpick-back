@@ -1,6 +1,9 @@
 package com.koreait.mzpick_backend.entity.travel;
 
 
+import java.util.List;
+import java.util.ArrayList;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +31,11 @@ public class TravelHashtagEntity {
     public TravelHashtagEntity(Integer travelNumber, String travelHashtagContent) {
         this.travelNumber = travelNumber;
         this.travelHashtagContent = travelHashtagContent;
+    }
+
+    public void patch(Integer travelNumber, String travelHashtagContent){
+        this.travelNumber = travelNumber;
+        this.travelHashtagContent =travelHashtagContent;
     }
     
 }

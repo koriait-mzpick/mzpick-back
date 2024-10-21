@@ -4,6 +4,7 @@ package com.koreait.mzpick_backend.dto.request.travel;
 import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,11 +15,11 @@ import lombok.Setter;
 public class PatchTravelRequestDto {
     @NotBlank
     private String travelTitle;
-    @NotBlank
+    @NotNull
     private List<String> travelHashtagContentList;
     @NotBlank
     private String travelLocation;
-    @NotBlank
+    @NotNull
     private List<String> travelPhotoList;
     @NotBlank
     private String travelContent;

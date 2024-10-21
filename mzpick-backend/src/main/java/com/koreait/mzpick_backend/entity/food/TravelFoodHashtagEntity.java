@@ -25,4 +25,14 @@ public class TravelFoodHashtagEntity {
     private Integer travelFoodNumber;
     private String travelFoodHashtagContent;
     
+
+    public TravelFoodHashtagEntity(Integer travelFoodNumber, String travelHashtagContent) {
+        this.travelFoodNumber = travelFoodNumber;
+        this.travelFoodHashtagContent = travelHashtagContent;
+    }
+
+    public void patch(Integer travelFoodNumber, String travelHashtagContent){
+        this.travelFoodNumber = travelFoodNumber;
+        this.travelFoodHashtagContent =travelHashtagContent;
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.koreait.mzpick_backend.service.travel.TravelFileService;
+import com.koreait.mzpick_backend.service.FileService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/travel/file")
 @RequiredArgsConstructor
 public class  TravelFileController {
-    private final TravelFileService travelFileService;
+    private final FileService travelFileService;
 
     @PostMapping("/upload")
     public String postMethodName(

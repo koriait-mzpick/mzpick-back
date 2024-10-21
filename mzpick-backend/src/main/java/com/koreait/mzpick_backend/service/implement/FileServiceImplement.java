@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.service.implement.travel;
+package com.koreait.mzpick_backend.service.implement;
 
 import java.io.File;
 import java.util.UUID;
@@ -9,11 +9,11 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.koreait.mzpick_backend.service.travel.TravelFileService;
+import com.koreait.mzpick_backend.service.FileService;
 
 @Service
-public class TravelFileServiceImplement implements TravelFileService {
-
+public class FileServiceImplement implements FileService {
+    //고정값
     @Value("${file.path}")
     private String filePath;
     @Value("${file.url}")

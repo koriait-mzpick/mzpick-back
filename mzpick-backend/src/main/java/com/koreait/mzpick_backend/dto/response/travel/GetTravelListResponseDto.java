@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.koreait.mzpick_backend.common.object.Travel;
+// import com.koreait.mzpick_backend.common.object.Travel;
 import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
@@ -21,7 +21,6 @@ public class GetTravelListResponseDto extends ResponseDto{
 
     private GetTravelListResponseDto(List<TravelEntity> travelEntities) {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-         
     }
 
     public static ResponseEntity<GetTravelListResponseDto> success(List<TravelEntity> travelEntities) {
