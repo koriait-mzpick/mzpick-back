@@ -1,7 +1,14 @@
 package com.koreait.mzpick_backend.controller.travel;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.service.travel.TravelSaveService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -9,16 +16,23 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/travel/save")
 @RequiredArgsConstructor
 public class TravelSaveController {
-    
-    // private final TravelSaveService travelSaveService;
+
+    private final TravelSaveService travelSaveService;
 
     // @GetMapping("/{travelNumber}")
     // public ResponseEntity<ResponseDto> postSave(
-    //     @RequestBody @Valid Integer travelNumber
+    // @RequestBody @Valid Integer travelNumber
     // ) {
-        
 
-    //     ResponseEntity<ResponseDto> response = travelSaveService.postSave();
-    //     return response;
+    // ResponseEntity<ResponseDto> response = travelSaveService.postSave();
+    // return response;
     // }
+
+    @PutMapping("/{travelNumber}")
+    public ResponseEntity<ResponseDto> putSave(
+            @PathVariable("travelNumber") Integer travelNumber,
+            @AuthenticationPrincipal String userId) {
+        ResponseEntity<ResponseDto> response = travelSaveService.putSave(travelNumber, userId);
+        return response;
+    }
 }

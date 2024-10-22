@@ -68,4 +68,13 @@ public class TravelController {
         ResponseEntity<ResponseDto> response = travelService.patchTravel(requestBody, travelNumber, userId);
         return response;
     }
+
+    @PostMapping("/view/{travelNumber}")
+    public ResponseEntity<ResponseDto> upTravelViewCount(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<ResponseDto> response = travelService.upTravelViewCount(travelNumber);
+        return response;
+    }
+    
 }

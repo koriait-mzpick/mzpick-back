@@ -27,11 +27,11 @@ public class TravelLikeController {
     //     return response;
     // }
     @PutMapping("/{travelNumber}")
-    public ResponseEntity<ResponseDto> postLike(
+    public ResponseEntity<ResponseDto> putLike(
         @PathVariable("travelNumber") Integer travelNumber,
         @AuthenticationPrincipal String userId
     ) {
-        ResponseEntity<ResponseDto> response = travelLikeService.postLike(travelNumber, userId);
+        ResponseEntity<ResponseDto> response = travelLikeService.putLike(travelNumber, userId);
         return response;
     }
 }

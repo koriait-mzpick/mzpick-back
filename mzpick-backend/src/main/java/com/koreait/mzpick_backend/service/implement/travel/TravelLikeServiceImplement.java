@@ -21,7 +21,7 @@ public class TravelLikeServiceImplement implements TravelLikeService {
     private final TravelLikeRepository travelLikeRepository;
 
     @Override
-    public ResponseEntity<ResponseDto> postLike(Integer travelNumber, String userId) {
+    public ResponseEntity<ResponseDto> putLike(Integer travelNumber, String userId) {
 
         try {
             TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
@@ -36,9 +36,11 @@ public class TravelLikeServiceImplement implements TravelLikeService {
 
             if(isLike){
                 travelLikeRepository.delete(travelLikeEntity);
+                travelEntity.downLikeCount();
             }
             else{
                 travelLikeRepository.save(travelLikeEntity);
+                travelEntity.upLikeCount();
             }
 
             travelRepository.save(travelEntity);

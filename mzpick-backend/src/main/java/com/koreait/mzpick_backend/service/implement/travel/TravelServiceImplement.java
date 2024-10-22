@@ -15,11 +15,15 @@ import com.koreait.mzpick_backend.dto.response.travel.GetTravelDetailResponseDto
 import com.koreait.mzpick_backend.dto.response.travel.GetTravelListResponseDto;
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
+import com.koreait.mzpick_backend.entity.travel.TravelLikeEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
+import com.koreait.mzpick_backend.entity.travel.TravelSaveEntity;
 import com.koreait.mzpick_backend.repository.travel.TravelCommentRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelHashtagRepository;
+import com.koreait.mzpick_backend.repository.travel.TravelLikeRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelPhotoRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelRepository;
+import com.koreait.mzpick_backend.repository.travel.TravelSaveRepository;
 import com.koreait.mzpick_backend.service.travel.TravelService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,6 +36,8 @@ public class TravelServiceImplement implements TravelService {
     private final TravelHashtagRepository travelHashtagRepository;
     private final TravelPhotoRepository travelPhotoRepository;
     private final TravelCommentRepository travelCommentRepository;
+    private final TravelLikeRepository travelLikeRepository;
+    private final TravelSaveRepository travelSaveRepository;
     @Override
     public ResponseEntity<ResponseDto> postTravel(PostTravelRequestDto dto, String userId) {
         try {
@@ -72,9 +78,9 @@ public class TravelServiceImplement implements TravelService {
             boolean isUser = user.equals(userId);
             if (!isUser) return ResponseDto.noPermission();
 
-            travelHashtagRepository.deleteByTravelNumber(travelNumber);
-            travelPhotoRepository.deleteByTravelNumber(travelNumber);
-            travelCommentRepository.deleteByTravelNumber(travelNumber);
+            // travelHashtagRepository.deleteByTravelNumber(travelNumber);
+            // travelPhotoRepository.deleteByTravelNumber(travelNumber);
+            // travelCommentRepository.deleteByTravelNumber(travelNumber);
             travelRepository.delete(travelEntity);
 
         } catch (Exception exception) {
@@ -139,7 +145,6 @@ public class TravelServiceImplement implements TravelService {
                 Integer travelNumber = travelEntity.getTravelNumber();
                 List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
                 List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-                // 좋아요
                 Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
                 travels.add(travel);
             }
@@ -160,12 +165,30 @@ public class TravelServiceImplement implements TravelService {
 
             List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
             List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-            travelDetail =  new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+            List<TravelLikeEntity> travelLikeEntities = travelLikeRepository.findByTravelNumber(travelNumber);
+            List<TravelSaveEntity> travelSaveEntities = travelSaveRepository.findByTravelNumber(travelNumber);
+            travelDetail =  new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities, travelSaveEntities);
             
         } catch (Exception exception) {
             exception.printStackTrace();
             return ResponseDto.databaseError();
         }
         return GetTravelDetailResponseDto.success(travelDetail);
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> upTravelViewCount(Integer travelNumber) {
+        try {
+            TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
+            if(travelEntity == null) return ResponseDto.noExistBoard();
+
+            travelEntity.upViewCount();
+            travelRepository.save(travelEntity);
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return ResponseDto.success();
     }
 }
