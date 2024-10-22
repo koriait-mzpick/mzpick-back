@@ -7,6 +7,8 @@ import com.koreait.mzpick_backend.dto.request.cafe.PostTravelCafeRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 
 public interface TravelCafeService {
+    ResponseEntity<ResponseDto> getTravelCafe();
+    ResponseEntity<ResponseDto> getTravelCafeNum(Integer travelCafeNumber);
     ResponseEntity<ResponseDto> postTravelCafe(PostTravelCafeRequestDto dto, String userId);
 
     ResponseEntity<ResponseDto> patchTravelCafe(PatchTravelCafeRequestDto dto, Integer travelCafeNumber, String userId);

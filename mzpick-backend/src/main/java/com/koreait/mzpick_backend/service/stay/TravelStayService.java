@@ -7,6 +7,8 @@ import com.koreait.mzpick_backend.dto.request.stay.PostTravelStayRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 
 public interface TravelStayService {
+    ResponseEntity<ResponseDto> getTravelStay();
+    ResponseEntity<ResponseDto> getTravelStayNum(Integer travelStayNumber);
     ResponseEntity<ResponseDto> postTravelStay(PostTravelStayRequestDto dto, String userId);
 
     ResponseEntity<ResponseDto> patchTravelStay(PatchTravelStayRequestDto dto, Integer travelStayNumber, String userId);

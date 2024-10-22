@@ -150,4 +150,15 @@ public class TravelStayServiceImplement implements TravelStayService {
         return ResponseDto.success();
     }
 
+    @Override
+    public ResponseEntity<ResponseDto> getTravelStay() {
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelStay'");
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> getTravelStayNum(Integer travelStayNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelStayNum'");
+    }
+
 }

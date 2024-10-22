@@ -40,6 +40,16 @@ public class TravelController {
         ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
         return resposne;
     }
+<<<<<<< HEAD
+    @GetMapping("/{travelNumber}")
+    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
+        return resposne;
+    }
+=======
+>>>>>>> 242a098102e96732941b60a9bb4018fddb37203b
 
     @PostMapping(value = {"", "/"})
     public ResponseEntity<ResponseDto> postTravel(

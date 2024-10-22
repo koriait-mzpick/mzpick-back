@@ -8,6 +8,8 @@ import com.koreait.mzpick_backend.dto.response.ResponseDto;
 public interface TravelVoteService {
     REsponse
     ResponseEntity<ResponseDto> postTravelVote(PostTravelVoteRequestDto dto, String userId);
-    ResponseEntity<ResponseDto> deleteTravelVote(Integer travelVoteNumber, String userId);
-
+    ResponseEntity<ResponseDto> deleteTravelVote(Integer travelVoteNumber, String userId)
+    ResponseEntity<ResponseDto> getVote();
+    ResponseEntity<ResponseDto> clickVote(PostTravelVoteClickRequestDto dto, String userId);
+    ResponseEntity<ResponseDto> totalVote(Integer travelVoteNumber);
 }

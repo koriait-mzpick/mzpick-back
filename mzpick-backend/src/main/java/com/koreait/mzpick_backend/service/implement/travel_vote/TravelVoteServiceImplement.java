@@ -8,6 +8,7 @@ import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.entity.travel.TravelVoteEntity;
 import com.koreait.mzpick_backend.repository.travel.TravelVoteRepository;
 import com.koreait.mzpick_backend.repository.user.UserRepository;
+import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteClickRequestDto;
 import com.koreait.mzpick_backend.service.travel_vote.TravelVoteService;
 
 import lombok.RequiredArgsConstructor;
@@ -52,6 +53,23 @@ public class TravelVoteServiceImplement implements TravelVoteService {
         }
         return ResponseDto.success();
 
+    }
+    public ResponseEntity<ResponseDto> getVote() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getVote'");
+    }
+
+
+    @Override
+    public ResponseEntity<ResponseDto> clickVote(PostTravelVoteClickRequestDto dto, String userId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'clickVote'");
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> totalVote(Integer travelVoteNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'totalVote'");
     }
 
 }
