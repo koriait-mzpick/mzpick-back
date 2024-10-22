@@ -8,4 +8,5 @@ public interface TravelStayLikeService {
     
     ResponseEntity<ResponseDto> getLIke(Integer travelStayNumber);
     ResponseEntity<ResponseDto> postLIke(String userId);
+    
 }

@@ -11,3 +11,4 @@ public interface  TravelStayCommentService {
     ResponseEntity<ResponseDto> postComment(PostTravelCommentRequestDto dto, String userId);
     ResponseEntity<ResponseDto> deletecomment(Integer travelStayCommentNumber);
 }
+    

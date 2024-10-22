@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
@@ -28,8 +29,8 @@ public class TravelController {
     private final TravelService travelService;
 
     @GetMapping("/list")
-    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(){
-        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravelList();
+    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(@RequestParam("page") Integer page){
+        ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravelList(page);
         return resposne;
     }
     @GetMapping("/{travelNumber}")
@@ -39,6 +40,16 @@ public class TravelController {
         ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
         return resposne;
     }
+<<<<<<< HEAD
+    @GetMapping("/{travelNumber}")
+    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
+        return resposne;
+    }
+=======
+>>>>>>> 242a098102e96732941b60a9bb4018fddb37203b
 
     @PostMapping(value = {"", "/"})
     public ResponseEntity<ResponseDto> postTravel(
@@ -67,4 +78,13 @@ public class TravelController {
         ResponseEntity<ResponseDto> response = travelService.patchTravel(requestBody, travelNumber, userId);
         return response;
     }
+
+    @PostMapping("/view/{travelNumber}")
+    public ResponseEntity<ResponseDto> upTravelViewCount(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<ResponseDto> response = travelService.upTravelViewCount(travelNumber);
+        return response;
+    }
+    
 }
