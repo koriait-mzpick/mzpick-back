@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelDetailResponseDto;
 import com.koreait.mzpick_backend.dto.response.travel.GetTravelListResponseDto;
 import com.koreait.mzpick_backend.service.travel.TravelService;
 
@@ -31,13 +32,13 @@ public class TravelController {
         ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravelList();
         return resposne;
     }
-    // @GetMapping("/{travelNumber}")
-    // public ResponseEntity<? super GetTravelListResponseDto> getTravel(
-    //     @PathVariable("travelNumber") Integer travelNumber
-    // ){
-    //     ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravel();
-    //     return resposne;
-    // }
+    @GetMapping("/{travelNumber}")
+    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(
+        @PathVariable("travelNumber") Integer travelNumber
+    ){
+        ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
+        return resposne;
+    }
 
     @PostMapping(value = {"", "/"})
     public ResponseEntity<ResponseDto> postTravel(

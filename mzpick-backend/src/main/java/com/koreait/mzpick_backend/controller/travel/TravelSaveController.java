@@ -1,7 +1,13 @@
 package com.koreait.mzpick_backend.controller.travel;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.service.travel.TravelSaveService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,15 +16,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TravelSaveController {
     
-    // private final TravelSaveService travelSaveService;
+    private final TravelSaveService travelSaveService;
 
-    // @GetMapping("/{travelNumber}")
-    // public ResponseEntity<ResponseDto> postSave(
-    //     @RequestBody @Valid Integer travelNumber
-    // ) {
-        
-
-    //     ResponseEntity<ResponseDto> response = travelSaveService.postSave();
-    //     return response;
-    // }
+   @PostMapping("/{travelNumber}")
+   public ResponseEntity<ResponseDto> postSave(
+    @PathVariable("travelNumber")Integer travelNumber
+   ) {
+        ResponseEntity<ResponseDto> response = travelSaveService.postSave(travelNumber, null);
+        return response;
+   }
 }

@@ -3,6 +3,7 @@ package com.koreait.mzpick_backend.controller.food;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,19 @@ public class TravelFoodController {
 
     private final TravelFoodService travelFoodService;
 
+    @GetMapping(value = { "", "/" })
+    public ResponseEntity<ResponseDto> getTravelFood(
+            ) {
+        ResponseEntity<ResponseDto> resposne = travelFoodService.getTravelFood();
+        return resposne;
+    }
+    @GetMapping("/{travelFoodNumber}")
+    public ResponseEntity<ResponseDto> getTravelFoodNum(
+            @PathVariable("travelFoodNumber")Integer travelFoodNumber
+            ) {
+        ResponseEntity<ResponseDto> resposne = travelFoodService.getTravelFoodNum(travelFoodNumber);
+        return resposne;
+    }
     @PostMapping(value = { "", "/" })
     public ResponseEntity<ResponseDto> postTravelFood(
             @RequestBody @Valid PostTravelFoodRequestDto requestBody,

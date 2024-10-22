@@ -128,4 +128,16 @@ public class TravelFoodServiceImplement implements TravelFoodService {
 
     }
 
+    @Override
+    public ResponseEntity<ResponseDto> getTravelFood() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelFood'");
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> getTravelFoodNum(Integer travelFoodNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelFoodNum'");
+    }
+
 }
