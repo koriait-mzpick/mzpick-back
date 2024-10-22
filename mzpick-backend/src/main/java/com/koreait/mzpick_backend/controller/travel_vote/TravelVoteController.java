@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteClickRequestDto;
-
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.service.travel_vote.TravelVoteService;
@@ -35,7 +34,7 @@ public class TravelVoteController {
         @RequestBody @Valid PostTravelVoteRequestDto dto,
         @AuthenticationPrincipal String userId
     ) {
-        ResponseEntity<ResponseDto> response = travelVoteService.postVote(dto, userId);
+        ResponseEntity<ResponseDto> response = travelVoteService.postTravelVote(dto, userId);
         return response;
     }
     @PostMapping("/vote-click")
