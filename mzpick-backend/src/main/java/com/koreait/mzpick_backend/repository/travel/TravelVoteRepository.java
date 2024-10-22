@@ -7,5 +7,5 @@ import com.koreait.mzpick_backend.entity.travel.TravelVoteEntity;
 
 @Repository
 public interface TravelVoteRepository extends JpaRepository<TravelVoteEntity, Integer> {
-    
+    TravelVoteEntity findByTravelVoteNumber(Integer travelVoteNumber);
 }
