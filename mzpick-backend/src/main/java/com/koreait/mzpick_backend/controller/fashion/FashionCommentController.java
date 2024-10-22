@@ -2,7 +2,6 @@ package com.koreait.mzpick_backend.controller.fashion;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,30 +19,31 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/fashion/comment")
 @RequiredArgsConstructor
 public class FashionCommentController {
-    
+
     private final FashionCommentService fashionCommentService;
 
     @GetMapping("/{fashionNumber}")
     public ResponseEntity<ResponseDto> getComment(
-        @PathVariable("fashionNumber")Integer fashionNumber
-    ) {
+            @PathVariable("fashionNumber") Integer fashionNumber) {
         ResponseEntity<ResponseDto> response = fashionCommentService.getComment(fashionNumber);
         return response;
     }
+
     @PostMapping("/{fashionNumber}")
     public ResponseEntity<ResponseDto> postComment(
-        @RequestBody @Valid String requestBody,
-        @PathVariable("fashionNumber")Integer fashionNumber,
-        @AuthenticationPrincipal String userId
-    ) {
+            @RequestBody @Valid String requestBody,
+            @PathVariable("fashionNumber") Integer fashionNumber,
+            @AuthenticationPrincipal String userId) {
         ResponseEntity<ResponseDto> response = fashionCommentService.postComment(fashionNumber, userId);
         return response;
     }
-    @DeleteMapping("/{fashionNumber}")
-    public ResponseEntity<ResponseDto> deleteComment(
-        @PathVariable("fashionNumber")Integer fashionNumber
-    ) {
-        ResponseEntity<ResponseDto> response = fashionCommentService.deleteComment(fashionNumber);
-        return response;
-    }
+
+    // @DeleteMapping("/{fashionCommentNumber}")
+    // public ResponseEntity<ResponseDto> deleteComment(
+    //         @PathVariable("fashionNumber") Integer fashionNumber,
+    //         @AuthenticationPrincipal String userId
+    // ) {
+    //     ResponseEntity<ResponseDto> response = fashionCommentService.deleteComment(fashionNumber, userId);
+    //     return response;
+    // }
 }

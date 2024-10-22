@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//entity 여행 관련 투표 테이블 //
 @Getter
 @Setter
 @NoArgsConstructor

@@ -19,15 +19,7 @@ public class TravelSaveController {
 
     private final TravelSaveService travelSaveService;
 
-    // @GetMapping("/{travelNumber}")
-    // public ResponseEntity<ResponseDto> postSave(
-    // @RequestBody @Valid Integer travelNumber
-    // ) {
-
-    // ResponseEntity<ResponseDto> response = travelSaveService.postSave();
-    // return response;
-    // }
-
+    // controller 여행 게시판 저장 (저장 / 저장 취소) //
     @PutMapping("/{travelNumber}")
     public ResponseEntity<ResponseDto> putSave(
             @PathVariable("travelNumber") Integer travelNumber,

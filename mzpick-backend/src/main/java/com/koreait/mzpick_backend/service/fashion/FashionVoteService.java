@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.service.fashion_vote;
+package com.koreait.mzpick_backend.service.fashion;
 
 import org.springframework.http.ResponseEntity;
 

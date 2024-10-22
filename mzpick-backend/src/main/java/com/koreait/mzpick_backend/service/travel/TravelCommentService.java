@@ -4,9 +4,12 @@ import org.springframework.http.ResponseEntity;
 
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelCommentRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelCommentListResponseDto;
 
+
+//service 여행지 댓글 서비스 //
 public interface TravelCommentService {
-    // ResponseEntity<ResponseDto> getComment(Integer travelNumber);
+    ResponseEntity<? super GetTravelCommentListResponseDto> getTravelCommentList(Integer travelNumber);
 
     ResponseEntity<ResponseDto> postTravelComment(PostTravelCommentRequestDto dto, Integer travelNumber, String userId);
 

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// requestDto 여행지 게시글 작성하기 //
 @Getter
 @Setter
 @NoArgsConstructor

@@ -9,7 +9,7 @@ import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
 
 import jakarta.transaction.Transactional;
 
-
+// Repository 여행지 사진 레포지토리 //
 @Repository
 public interface TravelPhotoRepository extends JpaRepository<TravelPhotoEntity, Integer> {
     

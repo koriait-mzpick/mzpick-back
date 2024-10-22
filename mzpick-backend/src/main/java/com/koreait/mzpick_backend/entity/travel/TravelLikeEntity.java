@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//entity 여행지 좋아요 테이블 //
 @Getter
 @Setter
 @NoArgsConstructor

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// requestDto 여행지 수정 //
 @Getter
 @Setter
 @NoArgsConstructor

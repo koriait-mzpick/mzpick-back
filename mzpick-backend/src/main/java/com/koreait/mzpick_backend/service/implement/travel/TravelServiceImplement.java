@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.koreait.mzpick_backend.common.object.Travel;
-import com.koreait.mzpick_backend.common.object.TravelDetail;
+import com.koreait.mzpick_backend.common.object.travel.Travel;
+import com.koreait.mzpick_backend.common.object.travel.TravelDetail;
 import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
@@ -28,6 +28,7 @@ import com.koreait.mzpick_backend.service.travel.TravelService;
 
 import lombok.RequiredArgsConstructor;
 
+//service 여행지 관련 서비스 //
 @Service
 @RequiredArgsConstructor
 public class TravelServiceImplement implements TravelService {
@@ -38,6 +39,53 @@ public class TravelServiceImplement implements TravelService {
     private final TravelCommentRepository travelCommentRepository;
     private final TravelLikeRepository travelLikeRepository;
     private final TravelSaveRepository travelSaveRepository;
+    
+
+    //Get 여행지 게시글 리스트 불러오기 //
+    @Override
+    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(Integer page) {
+        List<Travel> travels = new ArrayList<>();
+
+        try {
+            Integer paging = 5 * (page - 1);
+            List<TravelEntity> travelEntities = travelRepository.findByPaging(paging);
+            for (TravelEntity travelEntity : travelEntities) {
+                Integer travelNumber = travelEntity.getTravelNumber();
+                List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
+                List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
+                Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+                travels.add(travel);
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return GetTravelListResponseDto.success(travels);
+    }
+
+    //Get 해당 여행 게시글 상세보기 //
+    @Override
+    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(Integer travelNumber) {
+        TravelDetail travelDetail =  null;
+        try {
+            TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
+            if (travelEntity == null) return ResponseDto.noExistBoard();
+
+            List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
+            List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
+            List<TravelLikeEntity> travelLikeEntities = travelLikeRepository.findByTravelNumber(travelNumber);
+            List<TravelSaveEntity> travelSaveEntities = travelSaveRepository.findByTravelNumber(travelNumber);
+            travelDetail =  new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities, travelSaveEntities);
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return GetTravelDetailResponseDto.success(travelDetail);
+    }
+
+    //Post 여행지 게시글 작성하기 //
     @Override
     public ResponseEntity<ResponseDto> postTravel(PostTravelRequestDto dto, String userId) {
         try {
@@ -69,6 +117,7 @@ public class TravelServiceImplement implements TravelService {
         return ResponseDto.success();
     }
 
+    //Delete 해당 여행지 게시판 삭제하기 //
     @Override
     public ResponseEntity<ResponseDto> deleteTravel(Integer travelNumber, String userId) {
         try {
@@ -90,11 +139,9 @@ public class TravelServiceImplement implements TravelService {
         return ResponseDto.success();
     }
 
+    //patch 해당 여행지 게시글 수정하기 //
     @Override
-    public ResponseEntity<ResponseDto> patchTravel(
-            PatchTravelRequestDto dto,
-            Integer travelNumber,
-            String userId) {
+    public ResponseEntity<ResponseDto> patchTravel(PatchTravelRequestDto dto, Integer travelNumber, String userId) {
         try {
             TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
             if (travelEntity == null) return ResponseDto.noExistBoard();
@@ -133,49 +180,7 @@ public class TravelServiceImplement implements TravelService {
         return ResponseDto.success();
     }
 
-    @Override
-    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(Integer page) {
-
-        List<Travel> travels = new ArrayList<>();
-
-        try {
-            Integer paging = 5 * (page - 1);
-            List<TravelEntity> travelEntities = travelRepository.findByPaging(paging);
-            for (TravelEntity travelEntity : travelEntities) {
-                Integer travelNumber = travelEntity.getTravelNumber();
-                List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
-                List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-                Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
-                travels.add(travel);
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
-
-        return GetTravelListResponseDto.success(travels);
-    }
-
-    @Override
-    public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(Integer travelNumber) {
-        TravelDetail travelDetail =  null;
-        try {
-            TravelEntity travelEntity = travelRepository.findByTravelNumber(travelNumber);
-            if (travelEntity == null) return ResponseDto.noExistBoard();
-
-            List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
-            List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-            List<TravelLikeEntity> travelLikeEntities = travelLikeRepository.findByTravelNumber(travelNumber);
-            List<TravelSaveEntity> travelSaveEntities = travelSaveRepository.findByTravelNumber(travelNumber);
-            travelDetail =  new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities, travelSaveEntities);
-            
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
-        return GetTravelDetailResponseDto.success(travelDetail);
-    }
-
+    //put 해당 여행지 게시글 조회수 업 시키기 //
     @Override
     public ResponseEntity<ResponseDto> upTravelViewCount(Integer travelNumber) {
         try {

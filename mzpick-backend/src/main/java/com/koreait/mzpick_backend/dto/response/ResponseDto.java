@@ -6,8 +6,7 @@ import org.springframework.http.ResponseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-// Response의 공통적 형태
-
+//responseDto 에러 및 성공 메세지 //
 @Getter
 @AllArgsConstructor
 public class ResponseDto {

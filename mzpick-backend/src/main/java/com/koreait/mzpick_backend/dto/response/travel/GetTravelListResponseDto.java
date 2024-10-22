@@ -6,13 +6,14 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.koreait.mzpick_backend.common.object.Travel;
+import com.koreait.mzpick_backend.common.object.travel.Travel;
 import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
 
 import lombok.Getter;
 
+//responseDto 여행지 리스트 불러오기 //
 @Getter
 public class GetTravelListResponseDto extends ResponseDto{
 

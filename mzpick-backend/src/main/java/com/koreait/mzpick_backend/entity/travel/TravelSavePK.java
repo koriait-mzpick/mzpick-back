@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+//entity 여행지 두개의 저장 PK 테이블 //
 @Getter
 @Setter
 @NoArgsConstructor

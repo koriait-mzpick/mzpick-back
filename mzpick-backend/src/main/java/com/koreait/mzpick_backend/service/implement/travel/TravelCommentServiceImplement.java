@@ -1,10 +1,14 @@
 package com.koreait.mzpick_backend.service.implement.travel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelCommentRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelCommentListResponseDto;
 import com.koreait.mzpick_backend.entity.travel.TravelCommentEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.repository.travel.TravelCommentRepository;
@@ -18,8 +22,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TravelCommentServiceImplement implements TravelCommentService {
     private final TravelRepository travelRepository;
-    private final TravelCommentRepository travelCommentRepository;
     private final UserRepository userRepository;
+    private final TravelCommentRepository travelCommentRepository;
+
+    @Override
+    public ResponseEntity<? super GetTravelCommentListResponseDto> getTravelCommentList(Integer travelNumber) {
+        List<TravelCommentEntity>  travelCommentEntities = new ArrayList<>();
+        try {
+            travelCommentEntities = travelCommentRepository.findByTravelNumber(travelNumber);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return GetTravelCommentListResponseDto.success(travelCommentEntities);
+    }
+
 
     @Override
     public ResponseEntity<ResponseDto> postTravelComment(PostTravelCommentRequestDto dto, Integer travelNumber,
@@ -58,7 +75,4 @@ public class TravelCommentServiceImplement implements TravelCommentService {
         }
         return ResponseDto.success();
     }
-
-
-
 }

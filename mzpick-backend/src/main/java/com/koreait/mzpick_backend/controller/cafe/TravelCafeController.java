@@ -25,12 +25,12 @@ import lombok.RequiredArgsConstructor;
 public class TravelCafeController {
     private final TravelCafeService travelCafeService;
 
-    @GetMapping(value = { "", "/" })
-    public ResponseEntity<ResponseDto> getTravelCafe(
-            ) {
-        ResponseEntity<ResponseDto> resposne = travelCafeService.getTravelCafe();
-        return resposne;
-    }
+    // @GetMapping("/list")
+    // public ResponseEntity<? super GetTevelCafeListResponseDto> getTravelList(@RequestParam("page") Integer page) {
+    //     ResponseEntity<? super GetTevelCafeListResponseDto> resposne = travelCafeService.getTravelCafe();
+    //     return resposne;
+    // }
+
     @GetMapping("/{travelCafeNumber}")
     public ResponseEntity<ResponseDto> getTravelCafeNum(
             @PathVariable("travelCafeNumber")Integer travelCafeNumber
