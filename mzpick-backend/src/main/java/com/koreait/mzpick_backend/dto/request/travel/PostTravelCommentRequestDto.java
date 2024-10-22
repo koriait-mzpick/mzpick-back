@@ -11,4 +11,5 @@ import lombok.Setter;
 public class PostTravelCommentRequestDto {
     @NotBlank
     private String travelComment;
+
 }

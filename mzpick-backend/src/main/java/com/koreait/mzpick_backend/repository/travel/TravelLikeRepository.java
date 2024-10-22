@@ -8,5 +8,5 @@ import com.koreait.mzpick_backend.entity.travel.TravelLikePK;
 
 @Repository
 public interface TravelLikeRepository extends JpaRepository<TravelLikeEntity, TravelLikePK> {
-    
+    boolean existsByUserIdAndTravelNumber(String userId, Integer TravelNumber);
 }

@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.controller.travel;
+package com.koreait.mzpick_backend.controller;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -16,9 +16,9 @@ import lombok.RequiredArgsConstructor;
 
 
 @RestController
-@RequestMapping("/api/v1/travel/file")
+@RequestMapping("/file")
 @RequiredArgsConstructor
-public class  TravelFileController {
+public class  FileController {
     private final FileService travelFileService;
 
     @PostMapping("/upload")
