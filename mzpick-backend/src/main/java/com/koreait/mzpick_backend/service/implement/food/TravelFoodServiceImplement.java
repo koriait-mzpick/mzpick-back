@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.dto.request.food.PatchTravelFoodRequestDto;
 import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodRequestDto;
-
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.entity.food.TravelFoodEntity;
 import com.koreait.mzpick_backend.entity.food.TravelFoodHashtagEntity;
@@ -16,7 +15,6 @@ import com.koreait.mzpick_backend.entity.food.TravelFoodPhotoEntity;
 import com.koreait.mzpick_backend.repository.food.TravelFoodHashtagRepository;
 import com.koreait.mzpick_backend.repository.food.TravelFoodPhotoRepository;
 import com.koreait.mzpick_backend.repository.food.TravelFoodRepository;
-
 import com.koreait.mzpick_backend.service.food.TravelFoodService;
 
 import lombok.RequiredArgsConstructor;
@@ -68,13 +66,11 @@ public class TravelFoodServiceImplement implements TravelFoodService {
 
         try {
             TravelFoodEntity travelFoodEntity = travelFoodRepository.findByTravelFoodNumber(travelFoodNumber);
-            if (travelFoodEntity == null)
-                return ResponseDto.noExistBoard();
+            if (travelFoodEntity == null) return ResponseDto.noExistBoard();
 
             String user = travelFoodEntity.getUserId();
             boolean isUser = user.equals(userId);
-            if (!isUser)
-                return ResponseDto.noPermission();
+            if (!isUser) return ResponseDto.noPermission();
 
             travelFoodHashtagRepository.deleteByTravelFoodNumber(travelFoodNumber);
             travelFoodPhotoRepository.deleteByTravelFoodNumber(travelFoodNumber);
@@ -88,6 +84,7 @@ public class TravelFoodServiceImplement implements TravelFoodService {
                         travelFoodHashtagContent);
                 travelFoodHashtagEntities.add(travelFoodHashtagEntity);
             }
+            travelFoodHashtagRepository.saveAll(travelFoodHashtagEntities);
 
             List<String> travelFoodPhotoList = dto.getTravelFoodPhotoList();
             List<TravelFoodPhotoEntity> travelFoodPhotoEntities = new ArrayList<>();

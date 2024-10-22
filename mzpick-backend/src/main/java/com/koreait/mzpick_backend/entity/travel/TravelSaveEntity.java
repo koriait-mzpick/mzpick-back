@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity(name="travelSave")
 @Table(name="travel_save")
 @IdClass(TravelSavePK.class)
@@ -23,5 +21,10 @@ public class TravelSaveEntity {
     private Integer travelNumber;
     @Id
     private String userId;
+
+    public TravelSaveEntity(Integer travelNumber, String userId) {
+        this.travelNumber = travelNumber;
+        this.userId = userId;
+    }
     
 }

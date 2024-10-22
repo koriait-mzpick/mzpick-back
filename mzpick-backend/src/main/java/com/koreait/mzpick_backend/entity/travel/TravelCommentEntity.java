@@ -1,6 +1,6 @@
 package com.koreait.mzpick_backend.entity.travel;
 
-
+import com.koreait.mzpick_backend.dto.request.travel.PostTravelCommentRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,14 +16,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="travelComment")
-@Table(name="travel_comment")
+@Entity(name = "travelComment")
+@Table(name = "travel_comment")
 public class TravelCommentEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer travelCommentNumber;
     private Integer travelNumber;
     private String userId;
     private String travelComment;
+
+    public TravelCommentEntity(PostTravelCommentRequestDto dto,Integer travelNumber, String userId){
+        this.travelNumber = travelNumber;
+        this.userId = userId;
+        this.travelComment = dto.getTravelComment();
+    }
 }
