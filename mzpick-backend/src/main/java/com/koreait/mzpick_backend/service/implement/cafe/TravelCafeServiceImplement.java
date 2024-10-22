@@ -148,4 +148,16 @@ public class TravelCafeServiceImplement implements TravelCafeService {
         }
         return ResponseDto.success();
     }
+
+    @Override
+    public ResponseEntity<ResponseDto> getTravelCafe() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelCafe'");
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> getTravelCafeNum(Integer travelCafeNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelCafeNum'");
+    }
 }

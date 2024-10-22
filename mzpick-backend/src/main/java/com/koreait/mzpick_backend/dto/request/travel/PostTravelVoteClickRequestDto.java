@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostTravelVoteReultRequestDtro {
+public class PostTravelVoteClickRequestDto {
     private String travelVoteResultChoice;
 }
