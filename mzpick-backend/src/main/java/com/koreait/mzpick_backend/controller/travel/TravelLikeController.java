@@ -19,13 +19,7 @@ public class TravelLikeController {
 
     private final TravelLikeService travelLikeService;
 
-    // @GetMapping("/{travelNumber}")
-    // public ResponseEntity<ResponseDto> getLike() {
-        
-
-    //     ResponseEntity<ResponseDto> response = travelLikeService.getLike();
-    //     return response;
-    // }
+    // controller 해당 여행 게시판 좋아요 버튼 (클릭 / 클릭 해제) //
     @PutMapping("/{travelNumber}")
     public ResponseEntity<ResponseDto> putLike(
         @PathVariable("travelNumber") Integer travelNumber,

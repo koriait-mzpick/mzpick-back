@@ -11,14 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.koreait.mzpick_backend.service.FileService;
 
+//service 파일 업로드 미리보기 관련 서비스 //
 @Service
-public class FileServiceImplement implements FileService {
-    //고정값
+public class FileServiceImplement implements FileService { 
+    
+    //! 업로드 폴더 경로 및 URL 
     @Value("${file.path}")
     private String filePath;
     @Value("${file.url}")
     private String fileUrl;
 
+    //Post 파일 업로드  //
     @Override
     public String upload(MultipartFile file) {
         if (file.isEmpty()) return null;
@@ -39,6 +42,7 @@ public class FileServiceImplement implements FileService {
         return url;
     }
 
+    //Get 파일 미리보기 //
     @Override
     public Resource getFile(String fileName) {
         Resource resource = null;

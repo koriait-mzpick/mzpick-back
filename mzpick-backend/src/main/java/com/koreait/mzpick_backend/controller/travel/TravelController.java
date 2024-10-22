@@ -28,53 +28,55 @@ import lombok.RequiredArgsConstructor;
 public class TravelController {
     private final TravelService travelService;
 
-    @GetMapping("/list")
-    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(@RequestParam("page") Integer page){
+    // controller 여행게시판 리스트 불러오기//
+    @GetMapping(value = {"", "/"})
+    public ResponseEntity<? super GetTravelListResponseDto> getTravelList(@RequestParam("page") Integer page) {
         ResponseEntity<? super GetTravelListResponseDto> resposne = travelService.getTravelList(page);
         return resposne;
     }
+
+    // controller 해당 여행 게시판 불러오기//
     @GetMapping("/{travelNumber}")
     public ResponseEntity<? super GetTravelDetailResponseDto> getTravel(
-        @PathVariable("travelNumber") Integer travelNumber
-    ){
+            @PathVariable("travelNumber") Integer travelNumber) {
         ResponseEntity<? super GetTravelDetailResponseDto> resposne = travelService.getTravel(travelNumber);
         return resposne;
     }
-
-    @PostMapping(value = {"", "/"})
+    
+    // controller 여행 게시판 작성하기 //
+    @PostMapping(value = { "", "/" })
     public ResponseEntity<ResponseDto> postTravel(
-        @RequestBody @Valid PostTravelRequestDto requestBody,
-        @AuthenticationPrincipal String userId
-    ){
+            @RequestBody @Valid PostTravelRequestDto requestBody,
+            @AuthenticationPrincipal String userId) {
         ResponseEntity<ResponseDto> resposne = travelService.postTravel(requestBody, userId);
         return resposne;
     }
 
+    // controller 해당 여행 게시판 삭제하기 //
     @DeleteMapping("/{travelNumber}")
     public ResponseEntity<ResponseDto> deleteTravel(
-        @PathVariable("travelNumber") Integer travelNumber,
-        @AuthenticationPrincipal String userId
-    ){
+            @PathVariable("travelNumber") Integer travelNumber,
+            @AuthenticationPrincipal String userId) {
         ResponseEntity<ResponseDto> response = travelService.deleteTravel(travelNumber, userId);
         return response;
     }
 
+    // controller 해당 여행 게시판 수정하기 //
     @PatchMapping("/{travelNumber}")
     public ResponseEntity<ResponseDto> patchTravel(
-        @RequestBody @Valid PatchTravelRequestDto requestBody,
-        @PathVariable("travelNumber") Integer travelNumber,
-        @AuthenticationPrincipal String userId
-    ){
+            @RequestBody @Valid PatchTravelRequestDto requestBody,
+            @PathVariable("travelNumber") Integer travelNumber,
+            @AuthenticationPrincipal String userId) {
         ResponseEntity<ResponseDto> response = travelService.patchTravel(requestBody, travelNumber, userId);
         return response;
     }
 
+    // controller  해당 여행 게시판 조회수 증가 시키기 //
     @PostMapping("/view/{travelNumber}")
     public ResponseEntity<ResponseDto> upTravelViewCount(
-        @PathVariable("travelNumber") Integer travelNumber
-    ){
+            @PathVariable("travelNumber") Integer travelNumber) {
         ResponseEntity<ResponseDto> response = travelService.upTravelViewCount(travelNumber);
         return response;
     }
-    
+
 }

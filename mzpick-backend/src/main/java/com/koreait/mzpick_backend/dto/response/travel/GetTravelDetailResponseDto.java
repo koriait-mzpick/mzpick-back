@@ -4,13 +4,14 @@ package com.koreait.mzpick_backend.dto.response.travel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.koreait.mzpick_backend.common.object.TravelDetail;
+import com.koreait.mzpick_backend.common.object.travel.TravelDetail;
 import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
 
 import lombok.Getter;
 
+// responseDto 해당 여행지 게시글 자세히 보기 //
 @Getter
 public class GetTravelDetailResponseDto extends ResponseDto {
 

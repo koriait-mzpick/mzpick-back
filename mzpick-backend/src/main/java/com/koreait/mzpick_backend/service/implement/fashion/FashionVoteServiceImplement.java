@@ -1,11 +1,13 @@
-package com.koreait.mzpick_backend.service.implement.fashion_vote;
+package com.koreait.mzpick_backend.service.implement.fashion;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.dto.request.fashion.PostFashionVoteClickRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
-import com.koreait.mzpick_backend.service.fashion_vote.FashionVoteService;
+import com.koreait.mzpick_backend.service.fashion.FashionVoteService;
 
+@Service
 public record FashionVoteServiceImplement() implements FashionVoteService {
 
     @Override

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//entity 여행지 두개의 투표 하기 PK 테이블 //
 @Getter
 @Setter
 @NoArgsConstructor

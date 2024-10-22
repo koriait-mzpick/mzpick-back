@@ -1,4 +1,4 @@
-package com.koreait.mzpick_backend.common.object;
+package com.koreait.mzpick_backend.common.object.travel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

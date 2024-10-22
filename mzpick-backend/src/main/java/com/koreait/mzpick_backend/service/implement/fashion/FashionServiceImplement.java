@@ -1,12 +1,15 @@
 package com.koreait.mzpick_backend.service.implement.fashion;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.dto.request.fashion.PatchFashionRequestDto;
 import com.koreait.mzpick_backend.dto.request.fashion.PostFashionRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.service.fashion.FashionService;
 
+
+@Service
 public class FashionServiceImplement implements FashionService{
 
     @Override
