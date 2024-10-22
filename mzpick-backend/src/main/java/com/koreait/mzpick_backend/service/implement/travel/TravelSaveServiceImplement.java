@@ -1,20 +1,6 @@
 package com.koreait.mzpick_backend.service.implement.travel;
 
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-
-import com.koreait.mzpick_backend.dto.response.ResponseDto;
-import com.koreait.mzpick_backend.service.travel.TravelSaveService;
-
-public class TravelSaveServiceImplement implements TravelSaveService {
-
-    @Override
-    public ResponseEntity<ResponseDto> postSave(Integer travelNumber, String userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'postSave'");
-    }
-    
-=======
 import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
@@ -62,5 +48,4 @@ public class TravelSaveServiceImplement implements TravelSaveService {
         return ResponseDto.success();
     }
 
->>>>>>> 242a098102e96732941b60a9bb4018fddb37203b
 }
