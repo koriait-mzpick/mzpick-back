@@ -1,13 +1,9 @@
 package com.koreait.mzpick_backend.entity.stay;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodRequestDto;
 import com.koreait.mzpick_backend.dto.request.stay.PatchTravelStayRequestDto;
 import com.koreait.mzpick_backend.dto.request.stay.PostTravelStayRequestDto;
-import com.koreait.mzpick_backend.dto.request.travel.PatchTravelRequestDto;
-import com.koreait.mzpick_backend.dto.request.travel.PostTravelRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +30,7 @@ public class TravelStayEntity {
     private String travelStayTitle;
     private String travelLocation;
     private String travelStayContent;
+    private Integer travelStayLikeCount;
     private Integer travelStayViewCount;
     private LocalDate travelStayDate;
 
@@ -44,6 +41,7 @@ public class TravelStayEntity {
         this.travelStayContent = dto.getTravelStayContent();
         this.travelStayDate = LocalDate.now();
         this.travelStayViewCount = 0;
+        this.travelStayLikeCount = 0;
     }
 
     public void patch(PatchTravelStayRequestDto dto, String userId){
@@ -52,5 +50,17 @@ public class TravelStayEntity {
         this.travelLocation = dto.getTravelStayLocation();
         this.travelStayContent = dto.getTravelStayContent();
         this.travelStayDate = LocalDate.now();
+    }
+
+    public void upLikeCount(){
+        this.travelStayLikeCount ++;
+    }
+
+    public void downLikeCount(){
+        this.travelStayLikeCount --;
+    }
+
+    public void upViewCount(){
+        this.travelStayViewCount ++;
     }
 }

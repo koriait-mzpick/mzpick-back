@@ -29,16 +29,18 @@ public class TravelCafeEntity {
     private String travelCafeTitle;
     private String travelLocation;
     private String travelCafeContent;
+    private Integer travelCafeLikeCount;
     private Integer travelCafeViewCount;
     private LocalDate travelCafeDate;
 
-        public TravelCafeEntity(PostTravelCafeRequestDto dto, String userId){
+    public TravelCafeEntity(PostTravelCafeRequestDto dto, String userId){
         this.userId = userId;
         this.travelCafeTitle = dto.getTravelCafeTitle();
         this.travelLocation = dto.getTravelCafeLocation();
         this.travelCafeContent = dto.getTravelCafeContent();
-        this.travelCafeDate = LocalDate.now();
         this.travelCafeViewCount = 0;
+        this.travelCafeLikeCount = 0;
+        this.travelCafeDate = LocalDate.now();
     }
 
     public void patch(PatchTravelCafeRequestDto dto, String userId){
@@ -48,4 +50,18 @@ public class TravelCafeEntity {
         this.travelCafeContent = dto.getTravelCafeContent();
         this.travelCafeDate = LocalDate.now();
     }
+
+    public void upLikeCount(){
+        this.travelCafeLikeCount ++;
+    }
+
+    public void downLikeCount(){
+        this.travelCafeLikeCount --;
+    }
+
+    public void upViewCount(){
+        this.travelCafeViewCount ++;
+    }
+
+    
 }

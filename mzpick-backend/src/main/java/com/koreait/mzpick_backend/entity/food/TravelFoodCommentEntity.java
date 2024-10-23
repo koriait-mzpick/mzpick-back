@@ -1,6 +1,8 @@
 package com.koreait.mzpick_backend.entity.food;
 
 
+import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodCommentRequestDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,4 +28,9 @@ public class TravelFoodCommentEntity {
     private String userId;
     private String travelFoodComment;
     
+    public TravelFoodCommentEntity(PostTravelFoodCommentRequestDto dto,Integer travelFoodNumber, String userId){
+        this.travelFoodNumber = travelFoodNumber;
+        this.userId = userId;
+        this.travelFoodComment = dto.getTravelFoodComment();
+    }
 }

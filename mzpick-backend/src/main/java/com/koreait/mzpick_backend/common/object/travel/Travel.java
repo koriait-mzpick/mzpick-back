@@ -21,7 +21,7 @@ public class Travel {
     private Integer travelView;
     private LocalDate travelDate;
 
-    public Travel(TravelEntity travelEntity, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities ) {
+    public Travel(TravelEntity travelEntity, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities) {
         List<String> travelPhoto = new ArrayList<>();
         for (TravelPhotoEntity travelPhotoEntity: travelPhotoEntities) travelPhoto.add(travelPhotoEntity.getTravelPhotoLink());
         
@@ -31,17 +31,16 @@ public class Travel {
         this.traveNumber = travelEntity.getTravelNumber();
         this.travelPhoto = travelPhoto;
         this.travelHashtag = travelHashtag;
-        this.travelLike = travelEntity.getTravelLikeCount();
         this.travelView = travelEntity.getTravelViewCount();
         this.travelDate = travelEntity.getTravelDate();
         
     }
 
-    public static List<Travel> getList(List<TravelEntity> travelEntities,List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities ) {
+    public static List<Travel> getList(List<TravelEntity> travelEntities,List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities) {
         List<Travel> travels = new ArrayList<>();
 
         for (TravelEntity travelEntity: travelEntities) {
-            Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
+            Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities);
             travels.add(travel);
         }
         return travels;

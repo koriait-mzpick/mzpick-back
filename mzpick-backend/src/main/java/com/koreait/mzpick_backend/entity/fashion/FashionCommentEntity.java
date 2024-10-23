@@ -1,11 +1,12 @@
 package com.koreait.mzpick_backend.entity.fashion;
 
+import com.koreait.mzpick_backend.dto.request.fashion.PostFashionCommentRequestDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity(name="fashionComment")
 @Table(name="fashion_comment")
 public class FashionCommentEntity {
@@ -23,4 +23,10 @@ public class FashionCommentEntity {
     private String userId;
     private Integer fashionNumber;
     private String fashionComment;
+
+    public FashionCommentEntity(PostFashionCommentRequestDto dto,Integer fashionNumber, String userId){
+        this.fashionNumber = fashionNumber;
+        this.userId = userId;
+        this.fashionComment = dto.getFashionComment();
+    }
 }

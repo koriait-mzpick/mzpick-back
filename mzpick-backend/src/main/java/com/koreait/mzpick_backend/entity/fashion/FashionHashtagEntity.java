@@ -22,4 +22,9 @@ public class FashionHashtagEntity {
     private Integer fashionHashtagNumber;
     private Integer fashionNumber;
     private String fashionHashtagContent;
+
+    public FashionHashtagEntity(Integer fashionNumber, String fashionHashtagContent){
+        this.fashionNumber = fashionNumber;
+        this.fashionHashtagContent = fashionHashtagContent;
+    }
 }

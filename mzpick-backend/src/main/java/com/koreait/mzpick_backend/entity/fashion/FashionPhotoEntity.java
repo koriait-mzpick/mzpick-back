@@ -22,4 +22,9 @@ public class FashionPhotoEntity {
     private Integer fashionPhotoNumber;
     private Integer fashionNumber;
     private String fashionPhotoLink;
+
+    public FashionPhotoEntity(Integer fashionNumber, String fashionPhotoLink){
+        this.fashionNumber = fashionNumber;
+        this.fashionPhotoLink = fashionPhotoLink;
+    }
 }

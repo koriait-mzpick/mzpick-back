@@ -46,15 +46,5 @@ public class TravelDetail {
         this.travelView = travelEntity.getTravelViewCount();
         this.travelDate = travelEntity.getTravelDate();
     }
-
-    // public static List<TravelDetail> getDetail(List<TravelEntity> travelEntities, List<TravelPhotoEntity> travelPhotoEntities, List<TravelHashtagEntity> travelHashtagEntities, List<TravelLikeEntity> travelLikeEntities) {
-    //     List<TravelDetail> travelDetails = new ArrayList<>();
-
-    //     for (TravelEntity travelEntity: travelEntities) {
-    //         TravelDetail travelDetail = new TravelDetail(travelEntity, travelPhotoEntities, travelHashtagEntities, travelLikeEntities);
-    //         travelDetails.add(travelDetail);
-    //     }
-    //     return travelDetails;
-    // }
 }
 

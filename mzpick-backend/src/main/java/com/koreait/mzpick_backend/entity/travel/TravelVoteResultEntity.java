@@ -1,7 +1,5 @@
 package com.koreait.mzpick_backend.entity.travel;
 
-import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteClickRequestDto;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -27,10 +25,5 @@ public class TravelVoteResultEntity {
     @Id
     private String userId;
     private String travelVoteResultChoice;
-
-    public TravelVoteResultEntity(PostTravelVoteClickRequestDto dto, Integer travelVoteNumber, String userId){
-        this.travelVoteNumber = travelVoteNumber;
-        this.userId = userId;
-        this.travelVoteResultChoice = dto.getTravelVoteResultChoice();
-    }                                       
+    
 }
