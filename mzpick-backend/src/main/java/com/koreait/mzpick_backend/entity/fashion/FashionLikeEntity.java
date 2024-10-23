@@ -21,4 +21,9 @@ public class FashionLikeEntity {
     private String userId;
     @Id
     private Integer fashionNumber;
+
+    public FashionLikeEntity(Integer fashionNumber, String userId){
+        this.userId = userId;
+        this.fashionNumber = fashionNumber;
+    }
 }

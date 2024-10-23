@@ -53,7 +53,7 @@ public class TravelServiceImplement implements TravelService {
                 Integer travelNumber = travelEntity.getTravelNumber();
                 List<TravelHashtagEntity> travelHashtagEntities = travelHashtagRepository.findByTravelNumber(travelNumber);
                 List<TravelPhotoEntity> travelPhotoEntities = travelPhotoRepository.findByTravelNumber(travelNumber);
-                Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities, new ArrayList<>());
+                Travel travel = new Travel(travelEntity, travelPhotoEntities, travelHashtagEntities);
                 travels.add(travel);
             }
         } catch (Exception exception) {

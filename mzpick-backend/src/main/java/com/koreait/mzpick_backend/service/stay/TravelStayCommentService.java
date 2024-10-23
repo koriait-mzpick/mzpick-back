@@ -2,13 +2,16 @@ package com.koreait.mzpick_backend.service.stay;
 
 import org.springframework.http.ResponseEntity;
 
-import com.koreait.mzpick_backend.dto.request.travel.PostTravelCommentRequestDto;
+import com.koreait.mzpick_backend.dto.request.stay.PostTravelStayCommentRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.stay.GetTravelStayCommentListResponseDto;
 
-public interface  TravelStayCommentService {
-    
-    ResponseEntity<ResponseDto> getComment(Integer travelStayNumber);
-    ResponseEntity<ResponseDto> postComment(PostTravelCommentRequestDto dto, String userId);
-    ResponseEntity<ResponseDto> deletecomment(Integer travelStayCommentNumber);
+
+//service 여행지 댓글 서비스 //
+public interface TravelStayCommentService {
+    ResponseEntity<? super GetTravelStayCommentListResponseDto> getTravelStayCommentList(Integer travelStayNumber);
+
+    ResponseEntity<ResponseDto> postTravelStayComment(PostTravelStayCommentRequestDto dto, Integer travelStayNumber, String userId);
+
+    ResponseEntity<ResponseDto> deleteTravelStayComment(Integer travelStayCommentNumber, String userId);
 }
-    

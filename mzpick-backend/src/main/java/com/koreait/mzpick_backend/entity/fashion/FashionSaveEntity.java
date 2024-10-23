@@ -21,4 +21,9 @@ public class FashionSaveEntity {
     private String userId;
     @Id
     private Integer fashionNumber;
+
+    public FashionSaveEntity (Integer fashionNumber, String userId){
+        this.fashionNumber = fashionNumber;
+        this.userId = userId;
+    }
 }

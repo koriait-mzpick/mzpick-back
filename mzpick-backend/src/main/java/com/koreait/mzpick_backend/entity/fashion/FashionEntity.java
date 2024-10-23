@@ -1,6 +1,9 @@
 package com.koreait.mzpick_backend.entity.fashion;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.koreait.mzpick_backend.dto.request.fashion.PatchFashionRequestDto;
+import com.koreait.mzpick_backend.dto.request.fashion.PostFashionRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +28,38 @@ public class FashionEntity {
     private String userId;
     private String fashionTitle;
     private String fashionContent;
-    private Integer fashionTotalPrice;
+    private Integer fashionLikeCount;
     private Integer fashionViewCount;
-    private Date fashionDate;
+    private Integer fashionTotalPrice;
+    private LocalDate fashionDate;
+
+    public FashionEntity(PostFashionRequestDto dto, String userId){
+        this.userId = userId;
+        this.fashionTitle = dto.getFashionTitle();
+        this.fashionContent = dto.getFashionContent();
+        this.fashionLikeCount = 0;
+        this.fashionViewCount = 0;
+        this.fashionTotalPrice = 0;
+        this.fashionDate = LocalDate.now();
+    }
+
+    public void patch(PatchFashionRequestDto dto, String userId){
+        this.userId = userId;
+        this.fashionTitle = dto.getFashionTitle();
+        this.fashionContent = dto.getFashionContent();
+        this.fashionDate = LocalDate.now();
+    }
+
+
+    public void upLikeCount(){
+        this.fashionLikeCount ++;
+    }
+
+    public void downLikeCount(){
+        this.fashionLikeCount --;
+    }
+
+    public void upViewCount(){
+        this.fashionViewCount ++;
+    }
 }

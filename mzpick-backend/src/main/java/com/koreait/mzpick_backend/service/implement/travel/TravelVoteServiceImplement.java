@@ -7,13 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.koreait.mzpick_backend.common.object.travel.TravelVote;
-import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteClickRequestDto;
 import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteRequestDto;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.travel.GetTravelVoteDetailResponseDto;
 import com.koreait.mzpick_backend.dto.response.travel.GetTravelVoteListResponseDto;
+import com.koreait.mzpick_backend.dto.response.travel.GetTravelVoteTotalCountResponseDto;
 import com.koreait.mzpick_backend.entity.travel.TravelVoteEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelVoteResultEntity;
+import com.koreait.mzpick_backend.entity.travel.resultSet.GetTravelVoteResultSet;
 import com.koreait.mzpick_backend.repository.travel.TravelVoteRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelVoteResultRepository;
 import com.koreait.mzpick_backend.repository.user.UserRepository;
@@ -29,15 +30,16 @@ public class TravelVoteServiceImplement implements TravelVoteService {
     private final TravelVoteRepository travelVoteRepository;
     private final TravelVoteResultRepository travelVoteResultRepository;
 
-    //Get 여행지 관련 투표 리스트 서비스 //
+    // Get 여행지 관련 투표 리스트 서비스 //
     @Override
     public ResponseEntity<? super GetTravelVoteListResponseDto> getTravelVoteList() {
         List<TravelVote> travelVotes = new ArrayList<>();
         try {
             List<TravelVoteEntity> travelVoteEntitys = travelVoteRepository.findAll();
-            for(TravelVoteEntity travelVoteEntity : travelVoteEntitys){
+            for (TravelVoteEntity travelVoteEntity : travelVoteEntitys) {
                 Integer travelVoteNumber = travelVoteEntity.getTravelVoteNumber();
-                List<TravelVoteResultEntity>  travelVoteResultEntitys = travelVoteResultRepository.findByTravelVoteNumber(travelVoteNumber);
+                List<TravelVoteResultEntity> travelVoteResultEntitys = travelVoteResultRepository
+                        .findByTravelVoteNumber(travelVoteNumber);
                 TravelVote travelVote = new TravelVote(travelVoteEntity, travelVoteResultEntitys);
                 travelVotes.add(travelVote);
             }
@@ -49,15 +51,17 @@ public class TravelVoteServiceImplement implements TravelVoteService {
         return GetTravelVoteListResponseDto.success(travelVotes);
     }
 
-    //Get 해당 여행지 관련 투표 게시글 상세보기 //
+    // Get 해당 여행지 관련 투표 게시글 상세보기 //
     @Override
     public ResponseEntity<? super GetTravelVoteDetailResponseDto> getTravelVote(Integer travelVoteNumber) {
-        TravelVote travelVote  = null;
+        TravelVote travelVote = null;
         try {
-            TravelVoteEntity travelVoteEntity =  travelVoteRepository.findByTravelVoteNumber(travelVoteNumber);
-            if(travelVoteEntity == null) return ResponseDto.noExistBoard();
+            TravelVoteEntity travelVoteEntity = travelVoteRepository.findByTravelVoteNumber(travelVoteNumber);
+            if (travelVoteEntity == null)
+                return ResponseDto.noExistBoard();
 
-            List<TravelVoteResultEntity> travelVoteResultEntities = travelVoteResultRepository.findByTravelVoteNumber(travelVoteNumber);
+            List<TravelVoteResultEntity> travelVoteResultEntities = travelVoteResultRepository
+                    .findByTravelVoteNumber(travelVoteNumber);
             travelVote = new TravelVote(travelVoteEntity, travelVoteResultEntities);
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -66,7 +70,7 @@ public class TravelVoteServiceImplement implements TravelVoteService {
         return GetTravelVoteDetailResponseDto.success(travelVote);
     }
 
-    //Post 여행지 관련 투표 작성하기 //
+    // Post 여행지 관련 투표 작성하기 //
     @Override
     public ResponseEntity<ResponseDto> postTravelVote(PostTravelVoteRequestDto dto, String userId) {
         try {
@@ -83,7 +87,7 @@ public class TravelVoteServiceImplement implements TravelVoteService {
         return ResponseDto.success();
     }
 
-    //Delete 여행지 관련 투표 게시글 삭제하기 //
+    // Delete 여행지 관련 투표 게시글 삭제하기 //
     @Override
     public ResponseEntity<ResponseDto> deleteTravelVote(Integer travelVoteNumber, String userId) {
 
@@ -107,21 +111,25 @@ public class TravelVoteServiceImplement implements TravelVoteService {
     }
 
     @Override
-    public ResponseEntity<ResponseDto> clickVote(PostTravelVoteClickRequestDto dto, Integer travelVoteNumber, String userId) {
-        
+    public ResponseEntity<ResponseDto> clickVote(Integer selectNumber, Integer travelVoteNumber, String userId) {
+
         try {
             TravelVoteEntity travelVoteEntity = travelVoteRepository.findByTravelVoteNumber(travelVoteNumber);
-            if(travelVoteEntity == null) return ResponseDto.noExistBoard();
+            if (travelVoteEntity == null)
+                return ResponseDto.noExistBoard();
 
             boolean existedUser = userRepository.existsByUserId(userId);
-            if (!existedUser) return ResponseDto.noExistUserId();
+            if (!existedUser)
+                return ResponseDto.noExistUserId();
+            String travelVoteResultChoice = selectNumber == 1 ? travelVoteEntity.getTravelVoteChoice1() : travelVoteEntity.getTravelVoteChoice2();
+
+            TravelVoteResultEntity travelVoteResultEntity = new TravelVoteResultEntity(travelVoteNumber, userId, travelVoteResultChoice);
 
             boolean isClick = travelVoteResultRepository.existsByUserIdAndTravelVoteNumber(userId, travelVoteNumber);
 
-            TravelVoteResultEntity travelVoteResultEntity = new TravelVoteResultEntity(dto, travelVoteNumber, userId);
-            if(isClick){
+            if (isClick) {
                 travelVoteResultRepository.delete(travelVoteResultEntity);
-            }else{
+            } else {
                 travelVoteResultRepository.save(travelVoteResultEntity);
             }
 
@@ -131,10 +139,17 @@ public class TravelVoteServiceImplement implements TravelVoteService {
         }
         return ResponseDto.success();
     }
-    
+
     @Override
-    public ResponseEntity<ResponseDto> totalVote(Integer travelVoteNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'totalVote'");
+    public ResponseEntity<? super GetTravelVoteTotalCountResponseDto>
+    totalVote(Integer travelVoteNumber) {
+    List<GetTravelVoteResultSet> resultSets = new ArrayList<>();
+    try {
+        resultSets = travelVoteResultRepository.totalVoteResultCount(travelVoteNumber);
+    } catch (Exception exception) {
+        exception.printStackTrace();
+        return ResponseDto.databaseError();
+    }
+    return GetTravelVoteTotalCountResponseDto.success(resultSets);
     }
 }

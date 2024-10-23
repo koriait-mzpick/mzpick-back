@@ -2,7 +2,6 @@ package com.koreait.mzpick_backend.entity.food;
 
 import java.time.LocalDate;
 
-
 import com.koreait.mzpick_backend.dto.request.food.PatchTravelFoodRequestDto;
 import com.koreait.mzpick_backend.dto.request.food.PostTravelFoodRequestDto;
 
@@ -31,6 +30,7 @@ public class TravelFoodEntity {
     private String travelFoodTitle;
     private String travelLocation;
     private String travelFoodContent;
+    private Integer travelFoodLikeCount;
     private Integer travelFoodViewCount;
     private LocalDate travelFoodDate;
 
@@ -40,6 +40,7 @@ public class TravelFoodEntity {
         this.travelLocation = dto.getTravelFoodLocation();
         this.travelFoodContent = dto.getTravelFoodContent();
         this.travelFoodViewCount = 0;
+        this.travelFoodLikeCount = 0;
         this.travelFoodDate = LocalDate.now();
     }
 
@@ -49,5 +50,17 @@ public class TravelFoodEntity {
         this.travelLocation = dto.getTravelFoodLocation();
         this.travelFoodContent = dto.getTravelFoodContent();
         this.travelFoodDate = LocalDate.now();
+    }
+
+    public void upLikeCount(){
+        this.travelFoodLikeCount ++;
+    }
+
+    public void downLikeCount(){
+        this.travelFoodLikeCount --;
+    }
+
+    public void upViewCount(){
+        this.travelFoodViewCount ++;
     }
 }

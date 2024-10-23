@@ -4,9 +4,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 
+//service 여행지 좋아요 서비스 //
 public interface TravelFoodLikeService {
-    
-    ResponseEntity<ResponseDto> getLike(Integer travelFoodNumber);
-    ResponseEntity<ResponseDto> postLike(Integer travelFoodNumber, String userId);
-    
+    ResponseEntity<ResponseDto> putLike(Integer travelNumber, String userId);
 }
