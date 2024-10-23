@@ -14,7 +14,7 @@ import lombok.Getter;
 
 @Getter
 public class Travel {
-    private Integer traveNumber;
+    private Integer travelNumber;
     private List<String> travelPhoto;
     private List<String> travelHashtag;
     private Integer travelLike;
@@ -28,7 +28,7 @@ public class Travel {
         List<String> travelHashtag = new ArrayList<>();
         for (TravelHashtagEntity travelHashtagEntity: travelHashtagEntities) travelHashtag.add(travelHashtagEntity.getTravelHashtagContent());
         
-        this.traveNumber = travelEntity.getTravelNumber();
+        this.travelNumber = travelEntity.getTravelNumber();
         this.travelPhoto = travelPhoto;
         this.travelHashtag = travelHashtag;
         this.travelLike = travelEntity.getTravelLikeCount();

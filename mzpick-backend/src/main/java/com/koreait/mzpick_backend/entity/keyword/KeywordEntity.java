@@ -1,12 +1,15 @@
 package com.koreait.mzpick_backend.entity.keyword;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.koreait.mzpick_backend.dto.request.keyword.PostKeywordWriteRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +28,11 @@ public class KeywordEntity {
     private Integer keywordNumber;
     private String userId;
     private String keywordContent;
-    private Date keywordDate;
+    private LocalDate keywordDate;
+
+    public KeywordEntity(PostKeywordWriteRequestDto dto , String userId){
+        this.userId = userId;
+        this.keywordContent = dto.getKeywordContent();
+        this.keywordDate = LocalDate.now();
+    }
 }
