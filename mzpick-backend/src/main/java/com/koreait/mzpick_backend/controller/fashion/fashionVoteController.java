@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/v1/fashion/vote")
 @RequiredArgsConstructor
-public class fashionVoteController {
+public class FashionVoteController {
 
     private final FashionVoteService fashionVoteService;
 
