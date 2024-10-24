@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.entity.auth.UserEntity;
 import com.koreait.mzpick_backend.repository.user.UserRepository;
-import com.koreait.mzpick_backend.service.mypage.MyPageService;
+import com.koreait.mzpick_backend.service.mypage.MyPageBoardReadService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class MyPageServiceImplement implements MyPageService{
+public class MyPageBoardReadServiceImplement implements MyPageBoardReadService{
     private final UserRepository userRepository;
 
     @Override
