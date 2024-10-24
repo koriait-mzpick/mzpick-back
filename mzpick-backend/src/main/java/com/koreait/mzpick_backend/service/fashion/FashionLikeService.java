@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 
 public interface FashionLikeService {
- 
-    ResponseEntity<ResponseDto> getLike(Integer fashionNumber);
-    ResponseEntity<ResponseDto> postLike(Integer fashionNumber, String userId);
+
+    ResponseEntity<ResponseDto> putLike(Integer fashionNumber, String userId);
 }

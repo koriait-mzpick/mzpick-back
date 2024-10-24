@@ -1,10 +1,24 @@
 package com.koreait.mzpick_backend.controller.fashion;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.koreait.mzpick_backend.dto.request.fashion.PostFashionlVoteRequestDto;
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.dto.response.fashion.GetFashionVoteDetailResponseDto;
+import com.koreait.mzpick_backend.dto.response.fashion.GetFashionVoteListResponseDto;
+import com.koreait.mzpick_backend.dto.response.fashion.GetFashionVoteTotalCountResponseDto;
 import com.koreait.mzpick_backend.service.fashion.FashionVoteService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -14,40 +28,41 @@ public class fashionVoteController {
 
     private final FashionVoteService fashionVoteService;
 
-    // @GetMapping(value = { "", "/" })
-    // public ResponseEntity<ResponseDto> getVote() {
-    //     ResponseEntity<ResponseDto> response = fashionVoteService.getVote();
-    //     return response;
-    // }
+    @GetMapping(value = { "", "/" })
+    public ResponseEntity<? super GetFashionVoteListResponseDto> getFashionVoteList() {
+        ResponseEntity<? super GetFashionVoteListResponseDto> response = fashionVoteService.getFashionVoteList();
+        return response;
+    }
 
-    // @PostMapping(value = { "", "/" })
-    // public ResponseEntity<ResponseDto> postVote(
-    //         @RequestBody @Valid String dto,
-    //         @AuthenticationPrincipal String userId) {
-    //     ResponseEntity<ResponseDto> response = fashionVoteService.postVote(dto, userId);
-    //     return response;
-    // }
+        @GetMapping("/{FashionVoteNumber}")
+    public ResponseEntity<? super GetFashionVoteDetailResponseDto> getTravelVote(
+            @PathVariable("FashionVoteNumber") Integer fashionVoteNumber) {
+        ResponseEntity<? super GetFashionVoteDetailResponseDto> response = fashionVoteService.getTravelVote(fashionVoteNumber);
+        return response;
+    }
 
-    // @PostMapping("/vote-click")
-    // public ResponseEntity<ResponseDto> clickVote(
-    //         @RequestBody @Valid PostFashionVoteClickRequestDto dto,
-    //         @AuthenticationPrincipal String userId) {
-    //     ResponseEntity<ResponseDto> response = fashionVoteService.clickVote(dto, userId);
-    //     return response;
-    // }
+    @PostMapping(value = { "", "/" })
+    public ResponseEntity<ResponseDto> postFashionVote(
+            @RequestBody @Valid PostFashionlVoteRequestDto dto,
+            @AuthenticationPrincipal String userId) {
+        ResponseEntity<ResponseDto> response = fashionVoteService.postFashionVote(dto, userId);
+        return response;
+    }
 
-    // @PostMapping("/boardwrite")
-    // public ResponseEntity<ResponseDto> boardVote(
-    //         @RequestBody @Valid String dto,
-    //         @AuthenticationPrincipal String userId) {
-    //     ResponseEntity<ResponseDto> response = fashionVoteService.boardVote(dto, userId);
-    //     return response;
-    // }
+    @PutMapping("/vote-click/{fashoinVoteNumber}/{selectNumber}")
+    public ResponseEntity<ResponseDto> putclickVote(
+            @PathVariable("fashoinVoteNumber") Integer fashoinVoteNumber,
+            @PathVariable("selectNumber") Integer selectNumber,
+            @AuthenticationPrincipal String userId) {
+        ResponseEntity<ResponseDto> response = fashionVoteService.clickVote(fashoinVoteNumber,selectNumber, userId);
+        return response;
+    }
 
-    // @GetMapping("/vote-total/{fashionVoteNumber}")
-    // public ResponseEntity<ResponseDto> totalVote(
-    //         @PathVariable("fashionVoteNumber") Integer fashionVoteNumber) {
-    //     ResponseEntity<ResponseDto> response = fashionVoteService.totalVote(fashionVoteNumber);
-    //     return response;
-    // }
+    @GetMapping("/vote-total")
+    public ResponseEntity<? super GetFashionVoteTotalCountResponseDto> totalFashionVote(
+        @RequestParam("fashionVoteNumber") Integer fashionVoteNumber
+        ){
+        ResponseEntity<? super GetFashionVoteTotalCountResponseDto> response = fashionVoteService.totalVote(fashionVoteNumber);
+        return response;
+        }
 }

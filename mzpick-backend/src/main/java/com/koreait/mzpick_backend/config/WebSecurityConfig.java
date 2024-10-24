@@ -49,7 +49,7 @@ public class WebSecurityConfig {
             .csrf(CsrfConfigurer::disable)
             .cors(cors -> cors.configurationSource(configurationSource()))
             .authorizeHttpRequests(request->request
-                .requestMatchers("/api/v1/auth/**", "/oauth2/callback/*", "/file/*", "/").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/oauth2/callback/*", "/file/*", "/","/api/v1/keyword/*").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/travel/**", "/api/v1/travel").permitAll()
                 .anyRequest().authenticated())
             .exceptionHandling(exception -> exception

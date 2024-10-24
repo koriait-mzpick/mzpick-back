@@ -1,9 +1,14 @@
 package com.koreait.mzpick_backend.controller.fashion;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.koreait.mzpick_backend.service.cafe.TravelCafeSaveService;
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.service.fashion.FashionSaveService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,16 +17,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FashionSaveController {
     
-    private final TravelCafeSaveService travelCafeSaveService;
+    private final FashionSaveService fashionSaveService;
 
-    // @PostMapping("/{travelCafeNumber}")
-    // public ResponseEntity<ResponseDto> postSave(
-    //     @RequestBody @Valid String requestBody,
-    //     @PathVariable("travelCafeNumber")Integer travelCafeNumber,
-    //     @AuthenticationPrincipal String userId
-    // ) {
-    //     ResponseEntity<ResponseDto> response = travelCafeSaveService.postSave(travelCafeNumber, userId);
-    //     return response;
-    // }
+    @PutMapping("/{fashionNumber}")
+    public ResponseEntity<ResponseDto> postSave(
+        @PathVariable("fashionNumber")Integer fashionNumber,
+        @AuthenticationPrincipal String userId
+    ) {
+        ResponseEntity<ResponseDto> response = fashionSaveService.postSave(fashionNumber, userId);
+        return response;
+    }
 
 }

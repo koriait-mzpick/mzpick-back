@@ -18,7 +18,6 @@ import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelLikeEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelSaveEntity;
-import com.koreait.mzpick_backend.repository.travel.TravelCommentRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelHashtagRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelLikeRepository;
 import com.koreait.mzpick_backend.repository.travel.TravelPhotoRepository;
@@ -36,7 +35,6 @@ public class TravelServiceImplement implements TravelService {
     private final TravelRepository travelRepository;
     private final TravelHashtagRepository travelHashtagRepository;
     private final TravelPhotoRepository travelPhotoRepository;
-    private final TravelCommentRepository travelCommentRepository;
     private final TravelLikeRepository travelLikeRepository;
     private final TravelSaveRepository travelSaveRepository;
     

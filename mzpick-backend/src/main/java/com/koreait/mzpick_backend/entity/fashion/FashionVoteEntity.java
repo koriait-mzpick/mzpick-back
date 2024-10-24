@@ -2,7 +2,7 @@ package com.koreait.mzpick_backend.entity.fashion;
 
 import java.time.LocalDate;
 
-import com.koreait.mzpick_backend.dto.request.travel.PostTravelVoteRequestDto;
+import com.koreait.mzpick_backend.dto.request.fashion.PostFashionlVoteRequestDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,13 +37,13 @@ public class FashionVoteEntity {
     private String fashionVoteChoice2;
     private LocalDate fashionVoteDate;
 
-    public FashionVoteEntity(PostTravelVoteRequestDto dto, String userId){
+    public FashionVoteEntity(PostFashionlVoteRequestDto dto, String userId){
         this.userId = userId;
-        this.fashionVoteTitle = dto.getTravelVoteTitle();
-        this.fashionVotePhoto1 = dto.getTravelVotePhoto1();
-        this.fashionVotePhoto2 = dto.getTravelVotePhoto2();
-        this.fashionVoteChoice1 = dto.getTravelVoteChoice1();
-        this.fashionVoteChoice2 = dto.getTravelVoteChoice2();
+        this.fashionVoteTitle = dto.getFashionVoteTitle();
+        this.fashionVotePhoto1 = dto.getFashionVotePhoto1();
+        this.fashionVotePhoto2 = dto.getFashionVotePhoto2();
+        this.fashionVoteChoice1 = dto.getFashionVoteChoice1();
+        this.fashionVoteChoice2 = dto.getFashionVoteChoice2();
         this.fashionVoteDate = LocalDate.now();
     }
 }
