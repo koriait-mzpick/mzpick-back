@@ -23,6 +23,7 @@ public class KeywordController {
     
     private final KeywordService keywordService;
 
+   
     @GetMapping(value={"", "/"})
     public ResponseEntity<? super GetKeywordListResponseDto> getKeyword() {
         ResponseEntity<? super GetKeywordListResponseDto> response = keywordService.getKeyword();

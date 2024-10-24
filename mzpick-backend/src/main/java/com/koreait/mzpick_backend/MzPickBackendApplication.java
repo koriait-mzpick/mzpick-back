@@ -8,6 +8,7 @@ public class MzPickBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MzPickBackendApplication.class, args);
+
 	}
 
 }
