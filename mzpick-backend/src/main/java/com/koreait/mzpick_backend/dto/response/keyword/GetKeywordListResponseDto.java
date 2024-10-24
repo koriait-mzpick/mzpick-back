@@ -4,6 +4,7 @@ import com.koreait.mzpick_backend.dto.response.ResponseCode;
 import com.koreait.mzpick_backend.dto.response.ResponseDto;
 import com.koreait.mzpick_backend.dto.response.ResponseMessage;
 import com.koreait.mzpick_backend.entity.keyword.KeywordEntity;
+import com.koreait.mzpick_backend.repository.resultSet.GetKeywordResultset;
 
 import java.util.List;
 
@@ -17,18 +18,16 @@ import lombok.Getter;
 @Getter
 public class GetKeywordListResponseDto extends ResponseDto {
     
-    private List<String> keywords;
+    // private List<String> keywords;
+    private List<GetKeywordResultset> getKeywordResultsets;
 
-    private GetKeywordListResponseDto(List<KeywordEntity> keywordEntities) {
+    private GetKeywordListResponseDto(List<GetKeywordResultset> getKeywordResultsets) {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
-        List<String> keywords = new ArrayList<>();
-        for (KeywordEntity keywordEntity: keywordEntities) keywords.add(keywordEntity.getKeywordContent());
-        this.keywords = keywords;
+        this.getKeywordResultsets = getKeywordResultsets;
     }
 
-    public static ResponseEntity<GetKeywordListResponseDto> success(List<KeywordEntity> keywordEntities) {
-
-        GetKeywordListResponseDto responseBody = new GetKeywordListResponseDto(keywordEntities);
+    public static ResponseEntity<GetKeywordListResponseDto> success(List<GetKeywordResultset> getKeywordResultsets) {
+        GetKeywordListResponseDto responseBody = new GetKeywordListResponseDto(getKeywordResultsets);
        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 }
