@@ -1,5 +1,6 @@
 package com.koreait.mzpick_backend.dto.request.fashion;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,5 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PostFashionVoteClickRequestDto {
+    @NotNull
     private String fashionVoteResultChoice;
 }

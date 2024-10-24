@@ -1,9 +1,14 @@
 package com.koreait.mzpick_backend.controller.fashion;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.koreait.mzpick_backend.service.cafe.TravelCafeLikeService;
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.service.fashion.FashionLikeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,24 +16,15 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/fashion/like")
 @RequiredArgsConstructor
 public class FashionLikeController {
-    
-    private final TravelCafeLikeService travelCafeLikeService;
 
-    // @GetMapping("/{travelCafeNumber}")
-    // public ResponseEntity<ResponseDto> getLike(
-    //     @PathVariable("travelCafeNumber")Integer travelCafeNumber
-    // ) {
-    //     ResponseEntity<ResponseDto> response = travelCafeLikeService.getLike(travelCafeNumber);
-    //     return response;
-    // }
+    private final FashionLikeService fashionLikeService;
 
-    // @PostMapping("/{travelCafeNumber}")
-    // public ResponseEntity<ResponseDto> postLike(
-    //     @RequestBody @Valid String requestBody,
-    //     @PathVariable("travelCafeNumber")Integer travelCafeNumber,
-    //     @AuthenticationPrincipal String userid
-    // ) {
-    //     ResponseEntity<ResponseDto> response = travelCafeLikeService.getLike(travelCafeNumber);
-    //     return response;
-    // }
+    @PutMapping("/{fashionNumber}")
+    public ResponseEntity<ResponseDto> putLike(
+            @PathVariable("fashionNumber") Integer fashionNumber,
+            @AuthenticationPrincipal String userId) {
+        ResponseEntity<ResponseDto> response = fashionLikeService.putLike(fashionNumber, userId);
+        return response;
+    }
+
 }

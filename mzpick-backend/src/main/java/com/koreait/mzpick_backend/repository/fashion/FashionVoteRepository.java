@@ -7,5 +7,5 @@ import com.koreait.mzpick_backend.entity.fashion.FashionVoteEntity;
 
 @Repository
 public interface FashionVoteRepository extends JpaRepository<FashionVoteEntity, Integer> {
-    
+   FashionVoteEntity findByFashionVoteNumber(Integer fashionVoteNumber);
 }

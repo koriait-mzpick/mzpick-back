@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.koreait.mzpick_backend.entity.travel.TravelEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelHashtagEntity;
-import com.koreait.mzpick_backend.entity.travel.TravelLikeEntity;
 import com.koreait.mzpick_backend.entity.travel.TravelPhotoEntity;
 
 import lombok.Getter;
@@ -18,6 +17,7 @@ public class Travel {
     private List<String> travelPhoto;
     private List<String> travelHashtag;
     private Integer travelLike;
+    @SuppressWarnings("FieldMayBeFinal")
     private Integer travelView;
     private LocalDate travelDate;
 

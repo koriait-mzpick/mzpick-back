@@ -11,9 +11,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PostKeywordWriteRequestDto {
-    
-    @NotBlank
-    private String userId;
     @NotBlank
     private String keywordContent;
     private LocalDate keywordDate;
