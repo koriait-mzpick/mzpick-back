@@ -1,44 +1,49 @@
 package com.koreait.mzpick_backend.controller.mypage;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.koreait.mzpick_backend.service.mypage.MyPageService;
+import com.koreait.mzpick_backend.dto.response.ResponseDto;
+import com.koreait.mzpick_backend.service.mypage.MyPageBoardReadService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
-public class myPageController {
+public class MyPageController {
     
-    private final MyPageService myPageService;
+    private final MyPageBoardReadService myPageBoardReadService;
 
-    // @GetMapping("write")
-    // public ResponseEntity<ResponseDto> userBoardRead() {
-    //     ResponseEntity<ResponseDto> response = myPageService.userBoardRead();
-    //     return response;
-    // }
-    // @GetMapping("like")
-    // public ResponseEntity<ResponseDto> userLikeBoardRead() {
-    //     ResponseEntity<ResponseDto> response = myPageService.userLikeBoardRead();
-    //     return response;
-    // }
-    // @GetMapping("save")
-    // public ResponseEntity<ResponseDto> userSaveBoardRead() {
-    //     ResponseEntity<ResponseDto> response = myPageService.userSaveBoardRead();
-    //     return response;
-    // }
-    // @GetMapping("vote")
-    // public ResponseEntity<ResponseDto> userPostBoardRead() {
-    //     ResponseEntity<ResponseDto> response = myPageService.userPostVoteRead();
-    //     return response;
-    // }
-    // @DeleteMapping("/{userId}")
-    // public ResponseEntity<ResponseDto> userDelete(
-    //     @PathVariable("userId")String userId
-    // ) {
-    //     ResponseEntity<ResponseDto> response = myPageService.userDelete(userId);
-    //     return response;
-    // }
+    @GetMapping("write-travel")
+    public ResponseEntity<ResponseDto> userBoardReadTravel() {
+        ResponseEntity<ResponseDto> response = myPageBoardReadService.userBoardReadTravel();
+        return response;
+    }
+    @GetMapping("write-food")
+    public ResponseEntity<ResponseDto> userBoardReadFood() {
+        ResponseEntity<ResponseDto> response = myPageBoardReadService.userBoardReadFood();
+        return response;
+    }
+    @GetMapping("write-stay")
+    public ResponseEntity<ResponseDto> userBoardReadStay() {
+        ResponseEntity<ResponseDto> response = myPageBoardReadService.userBoardReadStay();
+        return response;
+    }
+    @GetMapping("write-fashion")
+    public ResponseEntity<ResponseDto> userBoardReadFashion() {
+        ResponseEntity<ResponseDto> response = myPageBoardReadService.userBoardReadFashion();
+        return response;
+    }
+    @DeleteMapping("/")
+    public ResponseEntity<ResponseDto> userDelete(
+        @AuthenticationPrincipal String userId
+    ) {
+        ResponseEntity<ResponseDto> response = myPageBoardReadService.userDelete(userId);
+        return response;
+    }
 }

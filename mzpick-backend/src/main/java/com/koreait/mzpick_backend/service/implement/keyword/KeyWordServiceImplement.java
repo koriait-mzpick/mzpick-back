@@ -35,7 +35,6 @@ public class KeyWordServiceImplement implements KeywordService{
     public ResponseEntity<? super GetKeywordListResponseDto> getKeyword() {
 
         List<GetKeywordResultset> keywordEntities  = new ArrayList<>();
-        
 
         try {
 
@@ -54,7 +53,7 @@ public class KeyWordServiceImplement implements KeywordService{
             String endDate = simpleDateFormat2.format(calendar.getTime());
             
             keywordEntities = keywordRepository.getLanking(startDate, endDate);
-
+            
 
         } catch (Exception exception) {
             exception.printStackTrace();
